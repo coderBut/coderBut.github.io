@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>CoderBut&#39;s blog</title>
+  
+  
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2020-09-23T15:01:35.611Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>coderbut</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>webpack中的loader</title>
+    <link href="http://example.com/2020/09/23/webpack%E4%B8%AD%E7%9A%84loader/"/>
+    <id>http://example.com/2020/09/23/webpack%E4%B8%AD%E7%9A%84loader/</id>
+    <published>2020-09-23T05:40:21.000Z</published>
+    <updated>2020-09-23T15:01:35.611Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;loader的作用&quot;&gt;&lt;a href=&quot;#loader的作用&quot; class=&quot;headerlink&quot; title=&quot;loader的作用&quot;&gt;&lt;/a&gt;loader的作用&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;在之前的案例中，主要是使用webpack来处理所写的JS代码，并通过webpack来自动处理他们之间的依赖。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;但是在实际开发中并不只JS文件的处理，还会加载css文件、图片等，对于webpack本身来说，对于这些转化是不支持的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;所以就需要给webpack扩展对应的loader。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Web前端" scheme="http://example.com/categories/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="webpack" scheme="http://example.com/categories/Web%E5%89%8D%E7%AB%AF/webpack/"/>
+    
+    
+    <category term="前端" scheme="http://example.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://example.com/2020/09/23/hello-world/"/>
+    <id>http://example.com/2020/09/23/hello-world/</id>
+    <published>2020-09-23T01:56:42.299Z</published>
+    <updated>2020-09-23T07:22:41.787Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+</feed>

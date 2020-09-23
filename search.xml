@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hello World</title>
+    <url>/2020/09/23/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<a id="more"></a>
+
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>webpack中的loader</title>
+    <url>/2020/09/23/webpack%E4%B8%AD%E7%9A%84loader/</url>
+    <content><![CDATA[<h1 id="loader的作用"><a href="#loader的作用" class="headerlink" title="loader的作用"></a>loader的作用</h1><ol>
+<li><p>在之前的案例中，主要是使用webpack来处理所写的JS代码，并通过webpack来自动处理他们之间的依赖。</p>
+</li>
+<li><p>但是在实际开发中并不只JS文件的处理，还会加载css文件、图片等，对于webpack本身来说，对于这些转化是不支持的。</p>
+</li>
+<li><p>所以就需要给webpack扩展对应的loader。</p>
+<a id="more"></a>
+
+</li>
+</ol>
+<h1 id="loader的使用"><a href="#loader的使用" class="headerlink" title="loader的使用"></a>loader的使用</h1><ol>
+<li>通过npm安装所需要的loader。(<a href="https://www.webpackjs.com/">webpack中文官网</a>)</li>
+<li>webpack.config.js中的modules属性下配置。</li>
+</ol>
+<h1 id="loader"><a href="#loader" class="headerlink" title="loader"></a>loader</h1><h2 id="css-loader-和-style-loader"><a href="#css-loader-和-style-loader" class="headerlink" title="css-loader 和 style-loader"></a>css-loader 和 style-loader</h2><p>当没有使用css-loader时，直接在main.js文件中引用依赖然后打包：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//normal.css</span></span><br><span class="line">body &#123;</span><br><span class="line">	background-color: pink;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//main.js</span></span><br><span class="line"><span class="keyword">const</span> &#123;name,age,say,run&#125; = <span class="built_in">require</span>(<span class="string">&#x27;./js/info.js&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(name);</span><br><span class="line"><span class="built_in">console</span>.log(age);</span><br><span class="line"><span class="built_in">console</span>.log(say);</span><br><span class="line">run();</span><br><span class="line"></span><br><span class="line"><span class="comment">//依赖CSS文件，使得webpack打包时会处理normal.css文件</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">&#x27;./css/normal.css&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>控制台会输出如下错误：</p>
+<figure class="image-box">
+                <img src="https://cdn.jsdelivr.net/gh/serystal/heyuhangspic/20200922165432.png" alt="合适的loader处理" title="" class="">
+                <p>合适的loader处理</p>
+            </figure>
+
+<p>所以需要安装css-loader来处理css文件。使用<code>npm install --save-dev css-loader</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">rules: [</span><br><span class="line"> &#123;</span><br><span class="line">   test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">   use: [ <span class="string">&#x27;style-loader&#x27;</span>, <span class="string">&#x27;css-loader&#x27;</span> ]</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p> 注： 如果只是安装css-loader并打包，在DOM中并不会显示出css文件定义的效果。因为css-loader只是<strong>将css文件加载</strong>，想要将加载好的css文件渲染到DOM中，还需要安装<strong>style-loader</strong>(<code>npm install style-loader --save-dev</code>)；</p>
+<p>在使用<code> use: [ &#39;style-loader&#39;, &#39;css-loader&#39; ]</code>这个语句时，应注意在使用多个loader时，loader的执行顺序是从右往左，所以应该将style-loader放在左边，先执行css-loader加载css文件之后，再由style-loader渲染到DOM中。</p>
+</blockquote>
+<h2 id="less-loader"><a href="#less-loader" class="headerlink" title="less-loader"></a>less-loader</h2><blockquote>
+<p>Less 是一门 <strong>CSS 预处理语言</strong>，它扩展了 CSS 语言，增加了变量、Mixin、函数等特性，使 CSS 更易维护和扩展。</p>
+</blockquote>
+<p><strong>less-loader</strong>用于处理JS文件中对less文件的依赖。</p>
+<ol>
+<li><p>安装less-loader：使用指令<code>npm install --save-dev less-loader less</code>。</p>
+<p>⚠️*注： 如需安装指定版本，需要在loader后加 <code>@+版本号</code>*。以下同理。</p>
+</li>
+<li><p>在webpack.config.js文件中配置(执行顺序是<strong>自下而上</strong>)。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> test: <span class="regexp">/\.less$/</span>,</span><br><span class="line"> use: [&#123;</span><br><span class="line">  loader: <span class="string">&quot;style-loader&quot;</span></span><br><span class="line"> &#125;, &#123;</span><br><span class="line">     loader: <span class="string">&quot;css-loader&quot;</span></span><br><span class="line">    &#125;, &#123;</span><br><span class="line">      	loader: <span class="string">&quot;less-loader&quot;</span>, <span class="attr">options</span>: &#123;</span><br><span class="line">      	strictMath: <span class="literal">true</span>,</span><br><span class="line">      	noIeCompat: <span class="literal">true</span></span><br><span class="line">       &#125;</span><br><span class="line"> &#125;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
+</ol>
+<h2 id="url-loader"><a href="#url-loader" class="headerlink" title="url-loader"></a>url-loader</h2><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>使用<code>url-loader</code>加载css样式中的一些图片等文件。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>使用指令：<code>npm install --save-dev url-loader</code>。</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>在<strong>webpack.config.js</strong>中配置：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> test: <span class="regexp">/\.(png|jpg|gif)$/</span>,</span><br><span class="line"> use: [&#123;</span><br><span class="line">  loader: <span class="string">&#x27;url-loader&#x27;</span>,</span><br><span class="line">  options: &#123;</span><br><span class="line">   <span class="comment">//当文件小于limit所定义的数值时，会将图片编译成base64字符串形式。</span></span><br><span class="line">   <span class="comment">//当图片大于limit定义的数值时，打包会报错，就需要使用file-loader模块进行加载。</span></span><br><span class="line">   limit: <span class="number">13000</span></span><br><span class="line">  &#125;</span><br><span class="line"> &#125;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 🔊如果插入的图片过大，就需要使用 <font color="red">file-loader</font>模块进行加载。</p>
+<h2 id="file-loader"><a href="#file-loader" class="headerlink" title="file-loader"></a>file-loader</h2><blockquote>
+<p>用于处理<strong>大文件</strong>的加载.</p>
+</blockquote>
+<ol>
+<li><p>安装指令: <code>npm install --save-dev file-loader</code>。</p>
+</li>
+<li><p>然后再次运行打包指令。</p>
+</li>
+<li><p>运行index.html，控制台会提示找不到文件。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/coderbut/blogimg/whatever/20200923202519.png"></p>
+</li>
+<li><p>是由于使用webpack打包时，webpack会把图片文件放到打包文件同一路径下直接引用，但是是直接引用，未指定前置路径。</p>
+<p>​                                            <img src="https://cdn.jsdelivr.net/gh/coderbut/blogimg/whatever/123.jpg"></p>
+<center><font size="2">同一路径</font></center>                                
+
+<p><img src="https://cdn.jsdelivr.net/gh/coderbut/blogimg/whatever/20200923203232.png"></p>
+<center><font size="2">没有前置路径</font></center>    
+</li>
+<li><p>在调试中将url路径改为<br><code>url(dist/8e08b79ef4c5e855db743e16c3b5f2a1.png)</code>，<br>此时页面就会正常渲染。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/coderbut/blogimg/whatever/20200923203926.png"></p>
+</li>
+<li><p>如果想要解决这个问题，就需要使background后的url引用路径改为<code>dist/xxx.jpg</code>。在webpack.config.js文件中加入<code>publicPath: &#39;dist/&#39;</code>。意为只要涉及到url的问题，都会自动地在文件前面加上==dist/==。</p>
+</li>
+</ol>
+<figure class="image-box">
+                <img src="https://cdn.jsdelivr.net/gh/coderbut/blogimg/whatever/20200923204400.png" alt="" title="" class="">
+                <p></p>
+            </figure>
+
+<center><font size="2">问题解决</font></center>
+
+<table><tr><td bgcolor=PowderBlue>💡当index.html文件也在<b>dist</b>文件夹下，<br />则不需要再使用 <i>publicPath: 'dist/'</i>指令</td></tr></table>
+
+<h3 id="关于生成的文件名"><a href="#关于生成的文件名" class="headerlink" title="关于生成的文件名"></a>关于生成的文件名</h3><ul>
+<li><p>webpack会在打包时将文件放入打包文件的同一目录下，并且会生成一个32位的hash值，防止文件命名重复。</p>
+</li>
+<li><p>但是在实际的开发中，我们可能对打包的名字有一定的要求——比如，将所有的图片放在一个文件夹中，但是需要跟上原来的名字，同时还要防止重复。</p>
+</li>
+<li><p>此时我们需要在options中添加一个<strong>name</strong>属性：</p>
+<ul>
+<li><code>img</code>：文件要打包的文件夹；</li>
+<li><code>name</code>：获取图片原来的名字，放在该位置；</li>
+<li><code>hash:8</code>：为了防止图片名称重复，依然使用hash，但是只保留8位；</li>
+<li><code>ext</code>：原来的图片扩展名。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//使用[name]就是使用图片原有的name，使用.是将名称连接起来</span></span><br><span class="line">name: <span class="string">&#x27;img/[name].[hash:8].[ext]&#x27;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将原本打包好的的文件删除，然后重新打包<code>npm run build</code>。</p>
+<p>​                                                    <img src="https://cdn.jsdelivr.net/gh/coderbut/blogimg/whatever/Snipaste20200923222351.jpg"></p>
+</li>
+</ul>
+<center><font size="2">完成打包在img目录下的自定义图片名称</font></center>
+
+
+
+<h2 id="babel-loader"><a href="#babel-loader" class="headerlink" title="babel-loader"></a>babel-loader</h2><p><font color="green">🏆我们上述的打包文件中会有ES6的语法，当浏览器不支持ES6时会无法正常渲染，所以我们需要使用babel-loader模块完成转换。</font></p>
+<ul>
+<li><p>安装：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm install babel-loader babel-core babel-preset-env webpack</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置： </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">	<span class="comment">//由于最后打包完成并运行node依赖文件并不参加，所以使用exclude将文件排除</span></span><br><span class="line"> exclude: <span class="regexp">/(node_modules|bower_components)/</span>,</span><br><span class="line"> use: &#123;</span><br><span class="line"> 	loader: <span class="string">&#x27;babel-loader&#x27;</span>,</span><br><span class="line"> 	options: &#123;</span><br><span class="line">	presets: [<span class="string">&#x27;@babel/preset-env&#x27;</span>]</span><br><span class="line"> 	&#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h1 id="此章完结"><a href="#此章完结" class="headerlink" title="此章完结"></a>此章完结</h1>]]></content>
+      <categories>
+        <category>Web前端</category>
+        <category>webpack</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+</search>
