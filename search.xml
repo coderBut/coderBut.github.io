@@ -44,7 +44,7 @@
 
 <p>控制台会输出如下错误：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/serystal/heyuhangspic/20200922165432.png" alt="合适的loader处理"></p>
-<p>所以需要安装css-loader来处理css文件。使用<code>npm install --save-dev css-loader</code>。</p>
+<p>所以需要安装css-loader来处理css文件。使用<code>npm install --save-dev css-loader</code>。<br>💥<font color="red"><code>--save-dev</code> 为开发时依赖模块，意为只用于开发，实际项目运行时并不依赖。</font> </p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">rules: [</span><br><span class="line"> &#123;</span><br><span class="line">   test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">   use: [ <span class="string">&#x27;style-loader&#x27;</span>, <span class="string">&#x27;css-loader&#x27;</span> ]</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
 <blockquote>
@@ -73,7 +73,7 @@
 <h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>在<strong>webpack.config.js</strong>中配置：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> test: <span class="regexp">/\.(png|jpg|gif)$/</span>,</span><br><span class="line"> use: [&#123;</span><br><span class="line">  loader: <span class="string">&#x27;url-loader&#x27;</span>,</span><br><span class="line">  options: &#123;</span><br><span class="line">   <span class="comment">//当文件小于limit所定义的数值时，会将图片编译成base64字符串形式。</span></span><br><span class="line">   <span class="comment">//当图片大于limit定义的数值时，打包会报错，就需要使用file-loader模块进行加载。</span></span><br><span class="line">   limit: <span class="number">13000</span></span><br><span class="line">  &#125;</span><br><span class="line"> &#125;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p> 🔊如果插入的图片过大，就需要使用 <font color="red">file-loader</font>模块进行加载。</p>
+<p> 🔊如果插入的图片过大，就需要使用 file-loader模块进行加载。</p>
 <h2 id="file-loader"><a href="#file-loader" class="headerlink" title="file-loader"></a>file-loader</h2><blockquote>
 <p>用于处理<strong>大文件</strong>的加载.</p>
 </blockquote>
@@ -138,6 +138,29 @@
 </li>
 </ul>
 <h1 id="此章完结"><a href="#此章完结" class="headerlink" title="此章完结"></a>此章完结</h1>]]></content>
+      <categories>
+        <category>Web前端</category>
+        <category>webpack</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>webpack配置Vue</title>
+    <url>/2020/09/24/webpack%E9%85%8D%E7%BD%AEVue/</url>
+    <content><![CDATA[<p>在之前的学习过程中，在项目中引用Vue大致是使用两种方法：</p>
+<ol>
+<li><p>下载Vue.js文件，然后通过<code>&lt;script&gt;</code>标签引入；</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;../js/vue.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用cdn引入</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>💥而这两种方法都是不符合我们的<strong>模块化</strong>开发思想的，模块化开发应该是以引入模块的方式进行使用。所以我们需要使用npm安装的方式来引入vue模块。</p>
+]]></content>
       <categories>
         <category>Web前端</category>
         <category>webpack</category>
