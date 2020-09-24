@@ -151,10 +151,10 @@
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm install babel-loader babel-core babel-preset-env webpack</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>配置： </p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">	<span class="comment">//由于最后打包完成并运行node依赖文件并不参加，所以使用exclude将文件排除</span></span><br><span class="line"> exclude: <span class="regexp">/(node_modules|bower_components)/</span>,</span><br><span class="line"> use: &#123;</span><br><span class="line"> 	loader: <span class="string">&#x27;babel-loader&#x27;</span>,</span><br><span class="line"> 	options: &#123;</span><br><span class="line">	presets: [<span class="string">&#x27;@babel/preset-env&#x27;</span>]</span><br><span class="line"> 	&#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">	<span class="comment">//由于最后打包完成并运行node依赖文件并不参加，所以使用exclude将文件排除</span></span><br><span class="line"> exclude: <span class="regexp">/(node_modules|bower_components)/</span>,</span><br><span class="line"> use: &#123;</span><br><span class="line"> 	loader: <span class="string">&#x27;babel-loader&#x27;</span>,</span><br><span class="line"> 	options: &#123;</span><br><span class="line">	 <span class="comment">// presets: [&#x27;@babel/preset-env&#x27;]</span></span><br><span class="line">	<span class="comment">// 为什么使用2015版本不知</span></span><br><span class="line">	presets: [<span class="string">&#x27;es2015&#x27;</span>]</span><br><span class="line"> 	&#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>再次运行<code>npm run build</code>。打包完成，然后进入打包好的文件<strong>bundle.js</strong>搜索ES6的语法(如<code>let</code>,<code>const</code>)，没有搜到，说明已经成功将ES6的语法转化为ES5。<br><img src="https://cdn.jsdelivr.net/gh/coderbut/blogimg/whatever/20200924181951.png" alt="没有const"><br><img src="https://cdn.jsdelivr.net/gh/coderbut/blogimg/whatever/20200924182035.png" alt="没有let"></li>
+</ul>
 </li>
 </ul>
 <h1 id="此章完结"><a href="#此章完结" class="headerlink" title="此章完结"></a>此章完结</h1>]]></content>
