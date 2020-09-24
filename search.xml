@@ -149,18 +149,47 @@
   <entry>
     <title>webpack配置Vue</title>
     <url>/2020/09/24/webpack%E9%85%8D%E7%BD%AEVue/</url>
-    <content><![CDATA[<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>在之前的学习过程中，在项目中引用Vue大致是使用两种方法：</p>
+    <content><![CDATA[<h1 id="安装Vue模块"><a href="#安装Vue模块" class="headerlink" title="安装Vue模块"></a>安装Vue模块</h1><p>在之前的学习过程中，在项目中引用Vue大致是使用两种方法：</p>
 <ol>
 <li><p>下载Vue.js文件，然后通过<code>&lt;script&gt;</code>标签引入；</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;../js/vue.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>使用cdn引入</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/vue/dist/vue.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
 <p>💥而这两种方法都是不符合我们的<strong>模块化</strong>开发思想的，模块化开发应该是以引入模块的方式进行使用。所以我们需要使用npm安装的方式来引入vue模块。</p>
-<p>使用指令</p>
+<p>使用指令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install vue --save</span><br></pre></td></tr></table></figure>
+
+<p><font color="green">注：由于Vue在运行时也是需要依赖的，所以不需要使用<code>--save-dev。</code></font></p>
+<h1 id="使用Vue模块"><a href="#使用Vue模块" class="headerlink" title="使用Vue模块"></a>使用Vue模块</h1><ol>
+<li><p>在js文件中使用vue进行开发：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//使用vue进行开发</span></span><br><span class="line"><span class="comment">//导入vue模块，引号中的vue就是安装好的vue模块</span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">&#x27;#app&#x27;</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    msg: <span class="string">&#x27;hello webpack&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在index.html文件中输入代码并执行：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./dist/bundle.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h1 id="运行时的错误-模板编译器"><a href="#运行时的错误-模板编译器" class="headerlink" title="运行时的错误-模板编译器"></a>运行时的错误-模板编译器</h1><ol>
+<li><p>并没有执行，浏览器会抛出一个错误：<br><img src="https://cdn.jsdelivr.net/gh/coderbut/blogimg/whatever/image-20200924224202310.png" alt="正在使用vue的runtime-only版本，模板编译器不可用。"></p>
+<p>🗨️这是由于vue模块有两个版本：<code>runtime-only</code> 和 <code>runtime-compiler</code>：</p>
+<ul>
+<li>runtime-only =&gt; 代码中不可以有任何的<strong>template</strong>；</li>
+<li>runtime-compiler  =&gt; 代码可以有<strong>template</strong>，因为有<code>compiler</code>用于编译template。</li>
+</ul>
+<p>🗨️因为使用的是前者打包，它其中并没有包含模板编译器，所以浏览器无法正常运行。<font size=2 color=red>被Vue实例el属性挂载的元素也可以看做是一个模板</font></p>
+</li>
+<li><p>解决这个问题需要在webpack.config.js文件中加入：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">resolve: &#123;</span><br><span class="line">  <span class="comment">//别名</span></span><br><span class="line">  alias: &#123;</span><br><span class="line">    <span class="comment">// vue$表示以vue结尾的文件,由于默认情况下vue使用的是vue.runtime.js，所以我们需要将vue的默认使用改变从而使用runtime-compiler。</span></span><br><span class="line">    <span class="string">&#x27;vue$&#x27;</span>: <span class="string">&#x27;vue/dist/vue.esm.js&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<center><font size=2>是将Vue的默认使用文件改变为<b>vue.esm.js</b>从而可以使用模板编译器</font></center>
+</li>
+<li><p>再次<code>npm run build</code>，就可以在浏览器中正常渲染啦！</p>
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>Web前端</category>
