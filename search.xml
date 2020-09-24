@@ -149,7 +149,7 @@
   <entry>
     <title>webpack配置Vue</title>
     <url>/2020/09/24/webpack%E9%85%8D%E7%BD%AEVue/</url>
-    <content><![CDATA[<p>在之前的学习过程中，在项目中引用Vue大致是使用两种方法：</p>
+    <content><![CDATA[<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>在之前的学习过程中，在项目中引用Vue大致是使用两种方法：</p>
 <ol>
 <li><p>下载Vue.js文件，然后通过<code>&lt;script&gt;</code>标签引入；</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;../js/vue.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -160,6 +160,7 @@
 </li>
 </ol>
 <p>💥而这两种方法都是不符合我们的<strong>模块化</strong>开发思想的，模块化开发应该是以引入模块的方式进行使用。所以我们需要使用npm安装的方式来引入vue模块。</p>
+<p>使用指令</p>
 ]]></content>
       <categories>
         <category>Web前端</category>
