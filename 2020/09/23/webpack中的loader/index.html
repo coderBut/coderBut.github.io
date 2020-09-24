@@ -1,8 +1,8 @@
-<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>webpack中的loader | CoderBut's blog</title><meta name="description" content="loader的作用 在之前的案例中，主要是使用webpack来处理所写的JS代码，并通过webpack来自动处理他们之间的依赖。  但是在实际开发中并不只JS文件的处理，还会加载css文件、图片等，对于webpack本身来说，对于这些转化是不支持的。  所以就需要给webpack扩展对应的loader。     loader的使用 通过npm安装所需要的loader。(webpack中文官网) w"><meta name="keywords" content="前端"><meta name="author" content="coderbut"><meta name="copyright" content="coderbut"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2020/09/23/webpack%E4%B8%AD%E7%9A%84loader/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="webpack中的loader"><meta property="og:url" content="http://example.com/2020/09/23/webpack%E4%B8%AD%E7%9A%84loader/"><meta property="og:site_name" content="CoderBut's blog"><meta property="og:description" content="loader的作用 在之前的案例中，主要是使用webpack来处理所写的JS代码，并通过webpack来自动处理他们之间的依赖。  但是在实际开发中并不只JS文件的处理，还会加载css文件、图片等，对于webpack本身来说，对于这些转化是不支持的。  所以就需要给webpack扩展对应的loader。     loader的使用 通过npm安装所需要的loader。(webpack中文官网) w"><meta property="og:image" content="http://example.com/null"><meta property="article:published_time" content="2020-09-23T05:40:21.000Z"><meta property="article:modified_time" content="2020-09-23T15:01:35.611Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>webpack中的loader | CoderBut's blog</title><meta name="description" content="loader的作用 loader的使用 loader css-loader 和 style-loader less-loader url-loader 作用 安装 使用   file-loader 关于生成的文件名   babel-loader   此章完结  loader的作用 在之前的案例中，主要是使用webpack来处理所写的JS代码，并通过webpack来自动处理他们之间的依赖。  但"><meta name="keywords" content="前端"><meta name="author" content="coderbut"><meta name="copyright" content="coderbut"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2020/09/23/webpack%E4%B8%AD%E7%9A%84loader/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="webpack中的loader"><meta property="og:url" content="http://example.com/2020/09/23/webpack%E4%B8%AD%E7%9A%84loader/"><meta property="og:site_name" content="CoderBut's blog"><meta property="og:description" content="loader的作用 loader的使用 loader css-loader 和 style-loader less-loader url-loader 作用 安装 使用   file-loader 关于生成的文件名   babel-loader   此章完结  loader的作用 在之前的案例中，主要是使用webpack来处理所写的JS代码，并通过webpack来自动处理他们之间的依赖。  但"><meta property="og:image" content="http://example.com/img/avatar.jpg"><meta property="article:published_time" content="2020-09-23T05:40:21.000Z"><meta property="article:modified_time" content="2020-09-23T18:27:35.307Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
   root: '/',
   hexoversion: '5.2.0',
   algolia: undefined,
-  localSearch: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
   translate: undefined,
   noticeOutdate: undefined,
   highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
@@ -27,7 +27,7 @@
     css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
   },
   baiduPush: false,
-  isPhotoFigcaption: false,
+  isPhotoFigcaption: true,
   islazyload: false,
   isanchor: false
 };
@@ -63,7 +63,7 @@ var saveToLocal = {
   isHome: false,
   isHighlightShrink: false,
   isSidebar: true,
-  postUpdate: '2020-09-23 23:01:35'
+  postUpdate: '2020-09-24 02:27:35'
 }</script><noscript><style type="text/css">
 #nav {
   opacity: 1
@@ -119,7 +119,29 @@ if (autoChangeMode === '1') {
   if (t === 'dark') activateDarkMode()
   else if (t === 'light') activateLightMode()
 }</script><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="CoderBut's blog" type="application/atom+xml">
-</head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/null" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">2</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">Tags</div><div class="length_num">1</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">Categories</div><div class="length_num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#loader%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">loader的作用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#loader%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">loader的使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#loader"><span class="toc-number">3.</span> <span class="toc-text">loader</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#css-loader-%E5%92%8C-style-loader"><span class="toc-number">3.1.</span> <span class="toc-text">css-loader 和 style-loader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#less-loader"><span class="toc-number">3.2.</span> <span class="toc-text">less-loader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#url-loader"><span class="toc-number">3.3.</span> <span class="toc-text">url-loader</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-number">3.3.1.</span> <span class="toc-text">作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">3.3.2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">3.3.3.</span> <span class="toc-text">使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#file-loader"><span class="toc-number">3.4.</span> <span class="toc-text">file-loader</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%94%9F%E6%88%90%E7%9A%84%E6%96%87%E4%BB%B6%E5%90%8D"><span class="toc-number">3.4.1.</span> <span class="toc-text">关于生成的文件名</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#babel-loader"><span class="toc-number">3.5.</span> <span class="toc-text">babel-loader</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A4%E7%AB%A0%E5%AE%8C%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">此章完结</span></a></li></ol></div></div></div><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">CoderBut's blog</a></span><span id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">webpack中的loader</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2020-09-23T05:40:21.000Z" title="Created 2020-09-23 13:40:21">2020-09-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2020-09-23T15:01:35.611Z" title="Updated 2020-09-23 23:01:35">2020-09-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Web%E5%89%8D%E7%AB%AF/">Web前端</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Web%E5%89%8D%E7%AB%AF/webpack/">webpack</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="loader的作用"><a href="#loader的作用" class="headerlink" title="loader的作用"></a>loader的作用</h1><ol>
+</head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">2</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">Tags</div><div class="length_num">1</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">Categories</div><div class="length_num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#loader%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">loader的作用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#loader%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">loader的使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#loader"><span class="toc-number">3.</span> <span class="toc-text">loader</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#css-loader-%E5%92%8C-style-loader"><span class="toc-number">3.1.</span> <span class="toc-text">css-loader 和 style-loader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#less-loader"><span class="toc-number">3.2.</span> <span class="toc-text">less-loader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#url-loader"><span class="toc-number">3.3.</span> <span class="toc-text">url-loader</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-number">3.3.1.</span> <span class="toc-text">作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">3.3.2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">3.3.3.</span> <span class="toc-text">使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#file-loader"><span class="toc-number">3.4.</span> <span class="toc-text">file-loader</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%94%9F%E6%88%90%E7%9A%84%E6%96%87%E4%BB%B6%E5%90%8D"><span class="toc-number">3.4.1.</span> <span class="toc-text">关于生成的文件名</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#babel-loader"><span class="toc-number">3.5.</span> <span class="toc-text">babel-loader</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A4%E7%AB%A0%E5%AE%8C%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">此章完结</span></a></li></ol></div></div></div><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">CoderBut's blog</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">webpack中的loader</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2020-09-23T05:40:21.000Z" title="Created 2020-09-23 13:40:21">2020-09-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2020-09-23T18:27:35.307Z" title="Updated 2020-09-24 02:27:35">2020-09-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Web%E5%89%8D%E7%AB%AF/">Web前端</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Web%E5%89%8D%E7%AB%AF/webpack/">webpack</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">1.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>4min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">Comments:</span><a href="/2020/09/23/webpack%E4%B8%AD%E7%9A%84loader/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2020/09/23/webpack%E4%B8%AD%E7%9A%84loader/" itemprop="commentCount"></span></a></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><p><img src="./attachments/1600885263264.drawio.html" alt="Diagram"></p>
+<ol>
+<li><a href="#loader%E7%9A%84%E4%BD%9C%E7%94%A8">loader的作用</a></li>
+<li><a href="#loader%E7%9A%84%E4%BD%BF%E7%94%A8">loader的使用</a></li>
+<li><a href="#loader">loader</a><ol>
+<li><a href="#css-loader-%E5%92%8C-style-loader">css-loader 和 style-loader</a></li>
+<li><a href="#less-loader">less-loader</a></li>
+<li><a href="#url-loader">url-loader</a><ol>
+<li><a href="#%E4%BD%9C%E7%94%A8">作用</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85">安装</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8">使用</a></li>
+</ol>
+</li>
+<li><a href="#file-loader">file-loader</a><ol>
+<li><a href="#%E5%85%B3%E4%BA%8E%E7%94%9F%E6%88%90%E7%9A%84%E6%96%87%E4%BB%B6%E5%90%8D">关于生成的文件名</a></li>
+</ol>
+</li>
+<li><a href="#babel-loader">babel-loader</a></li>
+</ol>
+</li>
+<li><a href="#%E6%AD%A4%E7%AB%A0%E5%AE%8C%E7%BB%93">此章完结</a></li>
+</ol>
+<h1 id="loader的作用"><a href="#loader的作用" class="headerlink" title="loader的作用"></a>loader的作用</h1><ol>
 <li><p>在之前的案例中，主要是使用webpack来处理所写的JS代码，并通过webpack来自动处理他们之间的依赖。</p>
 </li>
 <li><p>但是在实际开发中并不只JS文件的处理，还会加载css文件、图片等，对于webpack本身来说，对于这些转化是不支持的。</p>
@@ -137,11 +159,7 @@ if (autoChangeMode === '1') {
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//normal.css</span></span><br><span class="line">body &#123;</span><br><span class="line">	background-color: pink;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//main.js</span></span><br><span class="line"><span class="keyword">const</span> &#123;name,age,say,run&#125; = <span class="built_in">require</span>(<span class="string">&#x27;./js/info.js&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(name);</span><br><span class="line"><span class="built_in">console</span>.log(age);</span><br><span class="line"><span class="built_in">console</span>.log(say);</span><br><span class="line">run();</span><br><span class="line"></span><br><span class="line"><span class="comment">//依赖CSS文件，使得webpack打包时会处理normal.css文件</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">&#x27;./css/normal.css&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
 <p>控制台会输出如下错误：</p>
-<figure class="image-box">
-                <img src="https://cdn.jsdelivr.net/gh/serystal/heyuhangspic/20200922165432.png" alt="合适的loader处理" title="" class="">
-                <p>合适的loader处理</p>
-            </figure>
-
+<p><img src="https://cdn.jsdelivr.net/gh/serystal/heyuhangspic/20200922165432.png" alt="合适的loader处理"></p>
 <p>所以需要安装css-loader来处理css文件。使用<code>npm install --save-dev css-loader</code>。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">rules: [</span><br><span class="line"> &#123;</span><br><span class="line">   test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">   use: [ <span class="string">&#x27;style-loader&#x27;</span>, <span class="string">&#x27;css-loader&#x27;</span> ]</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
@@ -155,7 +173,7 @@ if (autoChangeMode === '1') {
 <p><strong>less-loader</strong>用于处理JS文件中对less文件的依赖。</p>
 <ol>
 <li><p>安装less-loader：使用指令<code>npm install --save-dev less-loader less</code>。</p>
-<p>⚠️*注： 如需安装指定版本，需要在loader后加 <code>@+版本号</code>*。以下同理。</p>
+<p>*⚠️注： 如需安装指定版本，需要在loader后加 <code>@+版本号</code>*。以下同理。</p>
 </li>
 <li><p>在webpack.config.js文件中配置(执行顺序是<strong>自下而上</strong>)。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> test: <span class="regexp">/\.less$/</span>,</span><br><span class="line"> use: [&#123;</span><br><span class="line">  loader: <span class="string">&quot;style-loader&quot;</span></span><br><span class="line"> &#125;, &#123;</span><br><span class="line">     loader: <span class="string">&quot;css-loader&quot;</span></span><br><span class="line">    &#125;, &#123;</span><br><span class="line">      	loader: <span class="string">&quot;less-loader&quot;</span>, <span class="attr">options</span>: &#123;</span><br><span class="line">      	strictMath: <span class="literal">true</span>,</span><br><span class="line">      	noIeCompat: <span class="literal">true</span></span><br><span class="line">       &#125;</span><br><span class="line"> &#125;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -196,11 +214,7 @@ if (autoChangeMode === '1') {
 <li><p>如果想要解决这个问题，就需要使background后的url引用路径改为<code>dist/xxx.jpg</code>。在webpack.config.js文件中加入<code>publicPath: &#39;dist/&#39;</code>。意为只要涉及到url的问题，都会自动地在文件前面加上==dist/==。</p>
 </li>
 </ol>
-<figure class="image-box">
-                <img src="https://cdn.jsdelivr.net/gh/coderbut/blogimg/whatever/20200923204400.png" alt="" title="" class="">
-                <p></p>
-            </figure>
-
+<p><img src="https://cdn.jsdelivr.net/gh/coderbut/blogimg/whatever/20200923204400.png"></p>
 <center><font size="2">问题解决</font></center>
 
 <table><tr><td bgcolor=PowderBlue>💡当index.html文件也在<b>dist</b>文件夹下，<br />则不需要再使用 <i>publicPath: 'dist/'</i>指令</td></tr></table>
@@ -239,4 +253,102 @@ if (autoChangeMode === '1') {
 
 </li>
 </ul>
-<h1 id="此章完结"><a href="#此章完结" class="headerlink" title="此章完结"></a>此章完结</h1></div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">coderbut</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2020/09/23/webpack%E4%B8%AD%E7%9A%84loader/">http://example.com/2020/09/23/webpack%E4%B8%AD%E7%9A%84loader/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a></div><div class="post_share"><div class="social-share" data-image="/null" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2020/09/23/hello-world/"><img class="next-cover" src="/" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Hello World</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By coderbut</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></section><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>
+<h1 id="此章完结"><a href="#此章完结" class="headerlink" title="此章完结"></a>此章完结</h1></div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">coderbut</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2020/09/23/webpack%E4%B8%AD%E7%9A%84loader/">http://example.com/2020/09/23/webpack%E4%B8%AD%E7%9A%84loader/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a></div><div class="post_share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> Donate<div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/image/wx.png" target="_blank"><img class="post-qr-code-img" src="/image/wx.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/image/zfb.jpg" target="_blank"><img class="post-qr-code-img" src="/image/zfb.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2020/09/23/hello-world/"><img class="next-cover" src="/null" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Hello World</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By coderbut</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>Powered by</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    window.valine = new Valine({
+      el: '#vcomment',
+      appId: 'oHvNz6iJFqVh3Aq36Ld6SwLo-gzGzoHsz',
+      appKey: 'AD12RHIiHJ96h0hg9VLaxuUf',
+      placeholder: '欢迎指点~',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '&lt;script src=&quot;https://cdn.bootcdn.net/ajax/libs/emojione/4.5.0/lib/js/emojione.min.js&quot;&gt;&lt;/script&gt;',
+      emojiMaps: {"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},
+      enableQQ: false,
+      path: window.location.pathname,
+    });
+    if ('nick,mail') { valine.config.requiredFields= 'nick,mail'.split(',') }
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else $.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.querySelector('#vcomment'),loadValine)
+  else setTimeout(() => loadValine(), 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  'meta[name=description]',
+  '#config_change',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  $('script[data-pjax]').each(function () {
+    $(this).parent().append($(this).remove())
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  $(window).off('scroll')
+
+  //reset readmode
+  $('body').hasClass('read-mode') && $('body').removeClass('read-mode')
+
+})</script></div></body></html>

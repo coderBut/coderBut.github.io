@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-09-23T15:01:35.611Z</updated>
+  <updated>2020-09-23T18:27:35.307Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,10 +21,32 @@
     <link href="http://example.com/2020/09/23/webpack%E4%B8%AD%E7%9A%84loader/"/>
     <id>http://example.com/2020/09/23/webpack%E4%B8%AD%E7%9A%84loader/</id>
     <published>2020-09-23T05:40:21.000Z</published>
-    <updated>2020-09-23T15:01:35.611Z</updated>
+    <updated>2020-09-23T18:27:35.307Z</updated>
     
     
-    <summary type="html">&lt;h1 id=&quot;loader的作用&quot;&gt;&lt;a href=&quot;#loader的作用&quot; class=&quot;headerlink&quot; title=&quot;loader的作用&quot;&gt;&lt;/a&gt;loader的作用&lt;/h1&gt;&lt;ol&gt;
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;./attachments/1600885263264.drawio.html&quot; alt=&quot;Diagram&quot;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;#loader%E7%9A%84%E4%BD%9C%E7%94%A8&quot;&gt;loader的作用&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#loader%E7%9A%84%E4%BD%BF%E7%94%A8&quot;&gt;loader的使用&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#loader&quot;&gt;loader&lt;/a&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;#css-loader-%E5%92%8C-style-loader&quot;&gt;css-loader 和 style-loader&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#less-loader&quot;&gt;less-loader&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#url-loader&quot;&gt;url-loader&lt;/a&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;#%E4%BD%9C%E7%94%A8&quot;&gt;作用&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E5%AE%89%E8%A3%85&quot;&gt;安装&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E4%BD%BF%E7%94%A8&quot;&gt;使用&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#file-loader&quot;&gt;file-loader&lt;/a&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;#%E5%85%B3%E4%BA%8E%E7%94%9F%E6%88%90%E7%9A%84%E6%96%87%E4%BB%B6%E5%90%8D&quot;&gt;关于生成的文件名&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#babel-loader&quot;&gt;babel-loader&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E6%AD%A4%E7%AB%A0%E5%AE%8C%E7%BB%93&quot;&gt;此章完结&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&quot;loader的作用&quot;&gt;&lt;a href=&quot;#loader的作用&quot; class=&quot;headerlink&quot; title=&quot;loader的作用&quot;&gt;&lt;/a&gt;loader的作用&lt;/h1&gt;&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;在之前的案例中，主要是使用webpack来处理所写的JS代码，并通过webpack来自动处理他们之间的依赖。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;但是在实际开发中并不只JS文件的处理，还会加载css文件、图片等，对于webpack本身来说，对于这些转化是不支持的。&lt;/p&gt;
