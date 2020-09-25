@@ -194,7 +194,7 @@
 <p>在上面的代码可以正常运行后，有一个问题出现了：</p>
 <p>❓ 当我们后续想要添加或修改data或其他属性的引用方式，我们就需要在index.html中修改相应的代码。那么有没有一种方法可以使我们在js文件中就可以修改呢？</p>
 </blockquote>
-<p>答案是我们可以在Vue实例中定义一个<strong>template</strong>属性：</p>
+<h2 id="Vue实例中的template属性"><a href="#Vue实例中的template属性" class="headerlink" title="Vue实例中的template属性"></a>Vue实例中的template属性</h2><p>答案是我们可以在Vue实例中定义一个<strong>template</strong>属性：</p>
 <ul>
 <li><p>在之前，我们只是定义了el属性，使得Vue实例对html中一个元素进行绑定；</p>
 </li>
@@ -204,6 +204,50 @@
 <li><p>完成之后即使html页面只有一个div#app元素，也可以正常渲染。有利于文件的分离。<br><img src="https://cdn.jsdelivr.net/gh/coderbut/blogimg/whatever/image-20200925003902466.png" alt="正常渲染"></p>
 </li>
 </ul>
+<h2 id="分离写法"><a href="#分离写法" class="headerlink" title="分离写法"></a>分离写法</h2><p>在上面，使用了Vue实例中的template属性，从而使前端html文件中只有一个div#app的元素。</p>
+<p>我们可以定义一个子组件，将属性从Vue实例中分离出来：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> App = &#123;</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;div&gt;</span></span><br><span class="line"><span class="string">    &lt;h2&gt;&#123;&#123; msg &#125;&#125;&lt;/h2&gt;</span></span><br><span class="line"><span class="string">    &lt;h2&gt;&#123;&#123; name &#125;&#125;&lt;/h2&gt;</span></span><br><span class="line"><span class="string">    &lt;button @click=&quot;btnClick&quot;&gt;点击事件&lt;/button&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">  `</span>,</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      msg: <span class="string">&#x27;hello webpack&#x27;</span>,</span><br><span class="line">      name: <span class="string">&#x27;coderbut&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    btnClick() &#123;</span><br><span class="line">      alert(<span class="string">&#x27;alert&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在Vue实例中注册模板，并在实例中的<code> template</code>属性中使用组件。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">&#x27;#app&#x27;</span>,</span><br><span class="line">  template: <span class="string">&#x27;&lt;App /&gt;&#x27;</span>,</span><br><span class="line">  components:&#123;</span><br><span class="line">    App</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>打包并运行，这样也可以得到相同的效果</p>
+<p><img src="https://cdn.jsdelivr.net/gh/coderbut/blogimg/whatever/20200925142500.png" alt="template: ‘&lt;App /&gt;’"></p>
+<h2 id="模块化-在js文件中导出"><a href="#模块化-在js文件中导出" class="headerlink" title="模块化 - 在js文件中导出"></a>模块化 - 在js文件中导出</h2><p>✨除了上述在一个js文件中定义一个子组件，还可以在另一个js文件中定义并导出，然后在mian.js文件中导入。</p>
+<ol>
+<li><p>定义一个App.js文件，并编辑。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//App.js</span></span><br><span class="line"><span class="comment">//default表示导出一个模块并且由导入者命名</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;div&gt;</span></span><br><span class="line"><span class="string">    &lt;h2&gt;&#123;&#123; msg &#125;&#125;&lt;/h2&gt;</span></span><br><span class="line"><span class="string">    &lt;h2&gt;&#123;&#123; name &#125;&#125;&lt;/h2&gt;</span></span><br><span class="line"><span class="string">    &lt;button @click=&quot;btnClick&quot;&gt;点击事件&lt;/button&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">  `</span>,</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      msg: <span class="string">&#x27;hello webpack&#x27;</span>,</span><br><span class="line">      name: <span class="string">&#x27;coderbut&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    btnClick() &#123;</span><br><span class="line">      alert(<span class="string">&#x27;alert&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//main</span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./js/App&#x27;</span></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">&#x27;#app&#x27;</span>,</span><br><span class="line">  template: <span class="string">&#x27;&lt;App /&gt;&#x27;</span>,</span><br><span class="line">  components:&#123;</span><br><span class="line">    App</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打包并运行，依然可以得到相同的效果。</p>
+</li>
+</ol>
+<h2 id="模块化-在-vue文件中配置"><a href="#模块化-在-vue文件中配置" class="headerlink" title="模块化 - 在.vue文件中配置"></a>模块化 - 在<code>.vue</code>文件中配置</h2><p>在使用vue模块中，我们可以定义后缀为<code>.vue</code>的文件，在里面定义属性模板，之后在js文件中引用。</p>
+<ol>
+<li><p>首先创建一个App.vue文件。<br><img src="https://cdn.jsdelivr.net/gh/serystal/heyuhangspic/img/Snipaste20200925154258521.jpg" alt="vue文件模板"></p>
+</li>
+<li><p>在vue文件中编辑。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;&#123; msg &#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;&#123; name &#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;btnClick&quot;</span>&gt;</span>点击事件<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">  name: <span class="string">&quot;App&quot;</span>,</span></span><br><span class="line">  data() &#123;</span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">      msg: <span class="string">&#x27;hello webpack&#x27;</span>,</span></span><br><span class="line"><span class="javascript">      name: <span class="string">&#x27;coderbut&#x27;</span></span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    btnClick() &#123;</span><br><span class="line"><span class="javascript">      alert(<span class="string">&#x27;alert&#x27;</span>);</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--可以为模板内的元素定义样式--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span>&gt;</span></span><br><span class="line">h2 &#123;</span><br><span class="line">  color: powderblue;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>此时如果直接打包会报错。<br><img src="https://cdn.jsdelivr.net/gh/serystal/heyuhangspic/img/Snipaste20200925161252619.png" alt="需要使用vue-loader"></p>
+</li>
+<li><p>我们需要安装<strong>vue-loader</strong>和<strong>vue-template-compiler</strong>。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install vue-loader vue-template-compiler --save-dev</span><br></pre></td></tr></table></figure>
+
+<p>然后在webpack.config.js文件中添加规则:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">rules: [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">//意为 .vue 文件使用vue-loader处理</span></span><br><span class="line">    test: <span class="regexp">/\.vue$/</span>,</span><br><span class="line">    use: [<span class="string">&#x27;vue-loader&#x27;</span>]</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>🚨注：在vue-loader<strong>14版本</strong>之后，使用vue-loader需要另外配置一个插件，这次我们把vue-loader的版本改到13 。</p>
+</li>
+<li><p>更改vue-loader版本。</p>
+<p>进入package.json文件，将vue-loader的版本改为<code>^13.0.0</code> 。再次运行<code>npm install</code>。</p>
+</li>
+<li><p>安装完成之后再次运行<code>npm run build</code>进行打包。</p>
+</li>
+<li><p>运行。<br><img src="https://cdn.jsdelivr.net/gh/serystal/heyuhangspic/img/Snipaste20200925163357818.png" alt="可以正常运行，并且定义 样式也生效了"></p>
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>Web前端</category>
