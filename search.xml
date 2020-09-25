@@ -3,8 +3,7 @@
   <entry>
     <title>webpack中的loader</title>
     <url>/2020/09/23/webpack%E4%B8%AD%E7%9A%84loader/</url>
-    <content><![CDATA[<p><img src="./attachments/1600885263264.drawio.html" alt="Diagram"></p>
-<ol>
+    <content><![CDATA[<ol>
 <li><a href="#loader%E7%9A%84%E4%BD%9C%E7%94%A8">loader的作用</a></li>
 <li><a href="#loader%E7%9A%84%E4%BD%BF%E7%94%A8">loader的使用</a></li>
 <li><a href="#loader">loader</a><ol>
@@ -246,6 +245,18 @@
 <li><p>安装完成之后再次运行<code>npm run build</code>进行打包。</p>
 </li>
 <li><p>运行。<br><img src="https://cdn.jsdelivr.net/gh/serystal/heyuhangspic/img/Snipaste20200925163357818.png" alt="可以正常运行，并且定义 样式也生效了"></p>
+</li>
+</ol>
+<p>当然，在vue文件中也可以导入vue文件(套娃警告)。</p>
+<ol>
+<li><p>定义另一个vue文件<code>Cpn.vue</code>；</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Cpn.vue</span></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;&#123;&#123; msg &#125;&#125;&lt;/h1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">&quot;Cpn&quot;</span>,</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      msg: <span class="string">&#x27;cpn template&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在App.vue中导入并注册；</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">components: &#123;</span><br><span class="line">    Cpn</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>之后重新打包并运行，就可以看到我们在App.vue中使用的Cpn.vue的内容了。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/coderbut/heyuhangspic/img/Snipaste20200925213653022.png" alt="执行效果"></p>
 </li>
 </ol>
 ]]></content>
