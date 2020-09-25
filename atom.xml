@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-09-25T15:52:14.862Z</updated>
+  <updated>2020-09-25T17:53:34.021Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>webpack的plugin(插件)</title>
+    <link href="http://example.com/2020/09/26/webpack%E7%9A%84plugin(%E6%8F%92%E4%BB%B6)/"/>
+    <id>http://example.com/2020/09/26/webpack%E7%9A%84plugin(%E6%8F%92%E4%BB%B6)/</id>
+    <published>2020-09-25T16:00:02.000Z</published>
+    <updated>2020-09-25T17:53:34.021Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;什么是plugin？&quot;&gt;&lt;a href=&quot;#什么是plugin？&quot; class=&quot;headerlink&quot; title=&quot;什么是plugin？&quot;&gt;&lt;/a&gt;什么是plugin？&lt;/h1&gt;&lt;p&gt;🦆   </summary>
+        
+      
+    
+    
+    
+    <category term="Web前端" scheme="http://example.com/categories/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="webpack" scheme="http://example.com/categories/Web%E5%89%8D%E7%AB%AF/webpack/"/>
+    
+    
+    <category term="前端" scheme="http://example.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>webpack配置Vue</title>
