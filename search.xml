@@ -3,51 +3,7 @@
   <entry>
     <title>webpack的使用</title>
     <url>/2020/09/23/webpack%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<ol>
-<li><a href="#webpack%E4%B8%AD%E7%9A%84loader">webpack中的loader</a><ol>
-<li><a href="#loader%E7%9A%84%E4%BD%9C%E7%94%A8">loader的作用</a></li>
-<li><a href="#loader%E7%9A%84%E4%BD%BF%E7%94%A8">loader的使用</a></li>
-<li><a href="#webpack%E7%9A%84loader">webpack的loader</a><ol>
-<li><a href="#css-loader-%E5%92%8C-style-loader">css-loader 和 style-loader</a></li>
-<li><a href="#less-loader">less-loader</a></li>
-<li><a href="#url-loader">url-loader</a></li>
-<li><a href="#file-loader">file-loader</a><ol>
-<li><a href="#%E5%85%B3%E4%BA%8E%E7%94%9F%E6%88%90%E7%9A%84%E6%96%87%E4%BB%B6%E5%90%8D">关于生成的文件名</a></li>
-</ol>
-</li>
-<li><a href="#babel-loader">babel-loader</a></li>
-</ol>
-</li>
-</ol>
-</li>
-<li><a href="#webpack%E9%85%8D%E7%BD%AEvue">webpack配置Vue</a><ol>
-<li><a href="#vue%E6%A8%A1%E5%9D%97">Vue模块</a><ol>
-<li><a href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E7%9A%84%E9%94%99%E8%AF%AF-%E6%A8%A1%E6%9D%BF%E7%BC%96%E8%AF%91%E5%99%A8">运行时的错误-模板编译器</a></li>
-</ol>
-</li>
-<li><a href="#%E5%88%9B%E5%BB%BAvue%E6%97%B6el%E5%92%8Ctemplate%E7%9A%84%E5%85%B3%E7%B3%BB">创建Vue时el和template的关系</a><ol>
-<li><a href="#vue%E5%AE%9E%E4%BE%8B%E4%B8%AD%E7%9A%84template%E5%B1%9E%E6%80%A7">Vue实例中的template属性</a></li>
-<li><a href="#%E5%88%86%E7%A6%BB%E5%86%99%E6%B3%95">分离写法</a></li>
-<li><a href="#%E6%A8%A1%E5%9D%97%E5%8C%96-%E5%9C%A8js%E6%96%87%E4%BB%B6%E4%B8%AD%E5%AF%BC%E5%87%BA">模块化 - 在js文件中导出</a></li>
-<li><a href="#%E6%A8%A1%E5%9D%97%E5%8C%96-%E5%9C%A8%E6%96%87%E4%BB%B6%E4%B8%AD%E9%85%8D%E7%BD%AE">模块化 - 在文件中配置</a></li>
-</ol>
-</li>
-</ol>
-</li>
-<li><a href="#webpack%E7%9A%84plugin%E6%8F%92%E4%BB%B6">webpack的plugin(插件)</a><ol>
-<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AFplugin">什么是plugin？</a></li>
-<li><a href="#plugin%E5%92%8Cloader%E7%9A%84%E5%8C%BA%E5%88%AB">plugin和loader的区别</a></li>
-<li><a href="#plugin%E7%9A%84%E4%BD%BF%E7%94%A8">plugin的使用</a></li>
-<li><a href="#webpack%E7%9A%84%E5%90%84%E7%A7%8Dplugins">webpack的各种plugins</a><ol>
-<li><a href="#bannerplugin%E6%8F%92%E4%BB%B6">BannerPlugin插件</a></li>
-<li><a href="#htmlwebpackplugin%E6%8F%92%E4%BB%B6">HtmlWebpackPlugin插件</a></li>
-<li><a href="#uglifyjswebpackplugin%E6%8F%92%E4%BB%B6">UglifyjsWebpackPlugin插件</a></li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<h1 id="webpack中的loader"><a href="#webpack中的loader" class="headerlink" title="webpack中的loader"></a>webpack中的<strong>loader</strong></h1><h2 id="loader的作用"><a href="#loader的作用" class="headerlink" title="loader的作用"></a>loader的作用</h2><ol>
+    <content><![CDATA[<h1 id="webpack中的loader"><a href="#webpack中的loader" class="headerlink" title="webpack中的loader"></a>webpack中的<strong>loader</strong></h1><h2 id="loader的作用"><a href="#loader的作用" class="headerlink" title="loader的作用"></a>loader的作用</h2><ol>
 <li><p>在之前的案例中，主要是使用webpack来处理所写的JS代码，并通过webpack来自动处理他们之间的依赖。</p>
 </li>
 <li><p>但是在实际开发中并不只JS文件的处理，还会加载css文件、图片等，对于webpack本身来说，对于这些转化是不支持的。</p>
@@ -241,7 +197,18 @@
 <li><p>在vue文件中编辑。</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;&#123; msg &#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;&#123; name &#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;btnClick&quot;</span>&gt;</span>点击事件<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">  name: <span class="string">&quot;App&quot;</span>,</span></span><br><span class="line">  data() &#123;</span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">      msg: <span class="string">&#x27;hello webpack&#x27;</span>,</span></span><br><span class="line"><span class="javascript">      name: <span class="string">&#x27;coderbut&#x27;</span></span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    btnClick() &#123;</span><br><span class="line"><span class="javascript">      alert(<span class="string">&#x27;alert&#x27;</span>);</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--可以为模板内的元素定义样式--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span>&gt;</span></span><br><span class="line">h2 &#123;</span><br><span class="line">  color: powderblue;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>此时如果直接打包会报错。<br><img src="https://cdn.jsdelivr.net/gh/serystal/heyuhangspic/img/Snipaste20200925161252619.png" alt="需要使用vue-loader"></p>
+<li><p>在main.js文件中导入该文件，注意此时文件需要加后缀；</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">&#x27;./vue/App.vue&#x27;</span>;</span><br><span class="line">mport App <span class="keyword">from</span> <span class="string">&#x27;./vue/App.vue&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">&#x27;#app&#x27;</span>,</span><br><span class="line">  template: <span class="string">&#x27;&lt;App /&gt;&#x27;</span>,</span><br><span class="line">  components:&#123;</span><br><span class="line">    App</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>💡&emsp;如果不想导入的时候加后缀，可以在webpack.config.js文件中配置<code>resolve</code>属性</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">resolve: &#123;</span><br><span class="line">      <span class="comment">//该属性表示可以省略的后缀名</span></span><br><span class="line">  extensions:[<span class="string">&#x27;.js&#x27;</span>,<span class="string">&#x27;.css&#x27;</span>,<span class="string">&#x27;.vue&#x27;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="4">
+<li><p>此时如果直接打包会报错；<br><img src="https://cdn.jsdelivr.net/gh/serystal/heyuhangspic/img/Snipaste20200925161252619.png" alt="需要使用vue-loader"></p>
 </li>
 <li><p>我们需要安装<strong>vue-loader</strong>和<strong>vue-template-compiler</strong>。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install vue-loader vue-template-compiler --save-dev</span><br></pre></td></tr></table></figure>
@@ -314,7 +281,7 @@
 </ol>
 <h3 id="UglifyjsWebpackPlugin插件"><a href="#UglifyjsWebpackPlugin插件" class="headerlink" title="UglifyjsWebpackPlugin插件"></a>UglifyjsWebpackPlugin插件</h3><h4 id="作用-3"><a href="#作用-3" class="headerlink" title="作用"></a>作用</h4><p>压缩打包好的js文件。使js文件变得可读性差。</p>
 <h4 id="具体使用-2"><a href="#具体使用-2" class="headerlink" title="具体使用"></a>具体使用</h4><ol>
-<li><p>安装插件(安装1.1.0版本，高版本报错)；</p>
+<li><p>安装插件(安装1.1.0版本，跟着老师做，先用指定版本~不然报错没法整，也是与cli的版本对应)；</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install uglifyjs-webpack-plugin@1.1.0 --save-dev</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在webpack.config.js中配置；</p>
@@ -331,6 +298,67 @@
 <p><img src="https://cdn.jsdelivr.net/gh/coderbut/heyuhangspic/img/Snipaste20200926150047481.png" alt="压缩混淆之后"></p>
 </li>
 </ol>
+<h1 id="webpack-dev-server搭建本地服务器"><a href="#webpack-dev-server搭建本地服务器" class="headerlink" title="webpack-dev-server搭建本地服务器"></a>webpack-dev-server搭建本地服务器</h1><h2 id="作用-4"><a href="#作用-4" class="headerlink" title="作用"></a>作用</h2><p>webpack提供了一个可选的基于nodejs的本地开发服务器，内部使用express框架，可以使浏览器自动刷新显示我们修改之后的结果。</p>
+<h2 id="使用-2"><a href="#使用-2" class="headerlink" title="使用"></a>使用</h2><ol>
+<li><p>使用npm安装该模块(跟着老师做，先用指定版本~不然报错没法整，也是与cli的版本对应)；</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save-dev webpack-dev-server@2.9.3</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在熟悉的webpack.config.js文件中配置<code>devserver</code>属性：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">  <span class="comment">//为哪个文件夹提供本地服务，默认根文件夹</span></span><br><span class="line">  contentBase: <span class="string">&#x27;./dist&#x27;</span>,</span><br><span class="line">  <span class="comment">//是否实时监听</span></span><br><span class="line">  inline: <span class="literal">true</span></span><br><span class="line">  <span class="comment">//端口号,先不配置了</span></span><br><span class="line">  <span class="comment">//port: </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再去package.json中配置一个<code>scripts</code>；</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&quot;dev&quot;: &quot;webpack-dev-server --open&quot;   // --open是打开浏览器</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后再运行<code>npm run dev</code>，会启动监听并打开浏览器，此时的路径就为</p>
+<p><img src="https://cdn.jsdelivr.net/gh/coderbut/heyuhangspic/img/Snipaste20200926210723913.png" alt="localhost:8080"></p>
+</li>
+<li><p>实时监听效果</p>
+<p><img src="https://cdn.jsdelivr.net/gh/coderbut/heyuhangspic/img/GIF20209262212159.gif" alt="实时改变样式"></p>
+</li>
+</ol>
+<h1 id="webpack配置文件分离"><a href="#webpack配置文件分离" class="headerlink" title="webpack配置文件分离"></a>webpack配置文件分离</h1><h2 id="为什么这样做"><a href="#为什么这样做" class="headerlink" title="为什么这样做"></a>为什么这样做</h2><p>在webpack.config.js文件中，我们有的配置是需要在开发时配置的，而实际运行时并不需要，比如WebpackDevServer模块、各种plugin。</p>
+<h2 id="具体使用-3"><a href="#具体使用-3" class="headerlink" title="具体使用"></a>具体使用</h2><ol>
+<li><p>分离我们的配置文件，定义三个配置文件。</p>
+<ul>
+<li><strong>base.config.js</strong>：用于存储开发和运行公用的配置，即这里面的配置既是开发时依赖，也是运行时依赖；</li>
+<li><strong>dev.config.js</strong>：开发时特殊的配置放在dev配置文件里面，只是开发时需要，实际运行时不需要的配置；</li>
+<li><strong>prod.config.js</strong>：生产时(运行时)特殊的配置放在prod配置文件里面。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//base.config.js</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">&#x27;webpack&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">&#x27;html-webpack-plugin&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">&#x27;./src/main.js&#x27;</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">&#x27;dist&#x27;</span>),</span><br><span class="line">    filename: <span class="string">&#x27;bundle.js&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.vue$/</span>,</span><br><span class="line">        use: [<span class="string">&#x27;vue-loader&#x27;</span>]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  resolve: &#123;</span><br><span class="line">    alias: &#123;</span><br><span class="line">      <span class="string">&#x27;vue$&#x27;</span>: <span class="string">&#x27;vue/dist/vue.esm.js&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> webpack.BannerPlugin(<span class="string">&#x27;最终版权归coderbut所有&#x27;</span>),</span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">      template: <span class="string">&#x27;index.html&#x27;</span></span><br><span class="line">    &#125;)</span><br><span class="line">  ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//dev.config.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    contentBase: <span class="string">&#x27;./dist&#x27;</span>,</span><br><span class="line">    inline: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//prod.config.js</span></span><br><span class="line"><span class="keyword">const</span> UglifyjsWebpackPlugin = <span class="built_in">require</span>(<span class="string">&#x27;uglifyjs-webpack-plugin&#x27;</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  plugins:[</span><br><span class="line">    <span class="keyword">new</span> UglifyjsWebpackPlugin()</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装<code>webpack-merge</code>模块(还是低版本，教程比较老，为了学习~)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install webpack-merge@4.1.5 --save-dev</span><br></pre></td></tr></table></figure>
+
+<p>之后在各个文件中导入并使用</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//prod.config.js</span></span><br><span class="line"><span class="comment">//导入WebpackMerge和base.config.js</span></span><br><span class="line"><span class="keyword">const</span> WebpackMerge = <span class="built_in">require</span>(<span class="string">&#x27;webpack-merge&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> BaseConfig = <span class="built_in">require</span>(<span class="string">&#x27;./base.config&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> UglifyjsWebpackPlugin = <span class="built_in">require</span>(<span class="string">&#x27;uglifyjs-webpack-plugin&#x27;</span>);</span><br><span class="line"><span class="comment">//使用WebpackMerge</span></span><br><span class="line"><span class="comment">//意为将第二个参数里的数据和导入的base.config.js文件合并</span></span><br><span class="line"><span class="built_in">module</span>.exports = WebpackMerge(BaseConfig,&#123;</span><br><span class="line">  plugins:[</span><br><span class="line">    <span class="keyword">new</span> UglifyjsWebpackPlugin()</span><br><span class="line">  ]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> WebpackMerge = <span class="built_in">require</span>(<span class="string">&#x27;webpack-merge&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> BaseConfig = <span class="built_in">require</span>(<span class="string">&#x27;./base.config&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = WebpackMerge(BaseConfig,&#123;</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    contentBase: <span class="string">&#x27;./dist&#x27;</span>,</span><br><span class="line">    inline: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除webpack.config.js文件，之后运行打包程序，终端会报错；</p>
+<p><img src="https://cdn.jsdelivr.net/gh/coderbut/heyuhangspic/img/Snipaste20200926235829401.png" alt="没有找到配置文件"></p>
+</li>
+<li><p>此时我们需要在package.json中的<code>script</code>属性中配置，为其中的自定义指令指令添加额外的命令；</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"><span class="comment">//自定义配置文件</span></span><br><span class="line">   &quot;build&quot;: &quot;webpack --config ./build/prod.config.js&quot;,</span><br><span class="line">   &quot;dev&quot;: &quot;webpack-dev-server --open --config ./build/dev.config.js&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="5">
+<li><p>再次打包，就可以成功了。</p>
+</li>
+<li><p>但是仍然会存在一个问题，就是在打包成功之后，打包好的bundle.js文件会在build文件下新建的dist文件夹中。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/coderbut/heyuhangspic/img/Snipaste20200927001505345.png" alt="路径问题"></p>
+<p>解决这个问题只需要进入base.config.js文件，找到当时定义的<code>path</code>属性，然后修改。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">entry: <span class="string">&#x27;./src/main.js&#x27;</span>,</span><br><span class="line"> output: &#123;</span><br><span class="line">   <span class="comment">//找到上一层然后拼接dist</span></span><br><span class="line">   path: path.resolve(__dirname, <span class="string">&#x27;../dist&#x27;</span>),</span><br><span class="line">   filename: <span class="string">&#x27;bundle.js&#x27;</span>,</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>修改完成之后再次打包，打包好的文件就会出现在该出现的位置了(根目录下的dist文件夹)。</p>
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>Web前端</category>
@@ -340,6 +368,92 @@
         <tag>前端</tag>
         <tag>webpack</tag>
         <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vue中级的笔记</title>
+    <url>/2020/09/27/vue%E4%B8%AD%E7%BA%A7%E7%9A%84%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="Vue-Cli-脚手架"><a href="#Vue-Cli-脚手架" class="headerlink" title="Vue Cli(脚手架)"></a>Vue Cli(脚手架)</h1><blockquote>
+<p><a href="https://cli.vuejs.org/zh/guide/">Vue Cli文档</a></p>
+<p>如果只是写vue的demo程序可能使用不到Vue Cli，但是开发大型项目，就必然要使用Vue Cli。</p>
+<p>使用Vuejs开发大型应用时，我们需要考虑代码目录结构、项目结构和部署、热加载、代码单元测试等事情。如果每个项目都要手动完成这些工作，那无疑效率比较低效，所以通常我们会使用一些脚手架工具来帮助完成这些事情。</p>
+</blockquote>
+<h2 id="什么是Cli"><a href="#什么是Cli" class="headerlink" title="什么是Cli"></a>什么是Cli</h2><ul>
+<li>Cu是Command—Line Interface，翻译为命令行界面，但是俗称脚手架；</li>
+<li>Vue CL是一个官方发布vue.js项目脚手架；</li>
+<li>使用vue—cli可以快速搭建Vue开发环境以及对应的webpack配置.</li>
+</ul>
+<h2 id="Vue-Cli的前提"><a href="#Vue-Cli的前提" class="headerlink" title="Vue Cli的前提"></a>Vue Cli的前提</h2><ul>
+<li><p><strong>node</strong></p>
+<ul>
+<li><p>需要安装node和npm，使用npm安装模块或者插件速度慢的话也可以使用cnpm阿里镜像下载，速度可能会快点。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install cnpm -g --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>webpack</p>
+</li>
+</ul>
+<h2 id="使用Vue-Cli"><a href="#使用Vue-Cli" class="headerlink" title="使用Vue Cli"></a>使用Vue Cli</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>由于npm实在太慢了，改用yarn安装。全局yarn安装方式：在终端执行<code>npm install -g yarn</code>。</p>
+<p>关于yarn还有一些坑：<a href="/2020/09/27/%E4%BD%BF%E7%94%A8yarn%E4%B8%8B%E8%BD%BD%E5%85%A8%E5%B1%80%E5%8C%85%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/" title="使用yarn下载全局包的一些坑">使用yarn下载全局包的一些坑</a>。</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">#使用yarn全局安装Vue Cli</span><br><span class="line">yarn global add @vue/cli</span><br></pre></td></tr></table></figure>
+
+<p>ℹ️&emsp;注：如果使用<code>yarn global add vue-cli</code>则安装的是<strong>Vue Cli 2.x的版本</strong></p>
+<p>安装的是最新版，但是由于最新版本与Vue Cli2的<strong>初始化项目方式不同</strong>，如果有需要我们可以拉去2.x模板。</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">yarn global add @vue/cli-init</span><br><span class="line"># `vue init` 的运行效果将会跟 `vue-cli@2.x` 相同</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>使用Vue Cli2初始化项目</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vue init webpack [项目名称]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用Vue Cli3+初始化项目</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vue creat [项目名称]</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Web前端</category>
+        <category>webpack</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用yarn下载全局包的一些坑</title>
+    <url>/2020/09/27/%E4%BD%BF%E7%94%A8yarn%E4%B8%8B%E8%BD%BD%E5%85%A8%E5%B1%80%E5%8C%85%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/</url>
+    <content><![CDATA[<h1 id="yarn安装全局包不能全局使用的问题"><a href="#yarn安装全局包不能全局使用的问题" class="headerlink" title="yarn安装全局包不能全局使用的问题"></a>yarn安装全局包不能全局使用的问题</h1><p>使用yarn全局安装了**@vue/cli**</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yarn global add @vue&#x2F;cli</span><br></pre></td></tr></table></figure>
+
+<p>但是在终端中使用<code>vue --version</code>提示</p>
+<blockquote>
+<p>‘vue’ 不是内部或外部命令，也不是可运行的程序<br>或批处理文件。</p>
+</blockquote>
+<p>但是明明已经使用global add全局安装了呀！在网上找到了解决方法：</p>
+<ol>
+<li><p>在终端运行<code>yarn global bin</code>得到一个路径，是yarn全局bin文件的路径</p>
+<p><img src="https://cdn.jsdelivr.net/gh/coderbut/heyuhangspic/img/yarnbingggg.jpg" alt="yarnbingggg"></p>
+</li>
+<li><p>之后去到环境变量中，在Path变量中添加上面得到的路径；</p>
+</li>
+<li><p>重启终端，然后再次执行<code>vue --version</code>，就可以正常显示了。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Web前端</category>
+        <category>node</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>node</tag>
+        <tag>yarn</tag>
       </tags>
   </entry>
 </search>

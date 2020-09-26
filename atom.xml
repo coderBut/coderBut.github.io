@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-09-26T10:45:16.143Z</updated>
+  <updated>2020-09-26T18:25:16.724Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,58 +17,75 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>使用yarn下载全局包的一些坑</title>
+    <link href="http://example.com/2020/09/27/%E4%BD%BF%E7%94%A8yarn%E4%B8%8B%E8%BD%BD%E5%85%A8%E5%B1%80%E5%8C%85%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/"/>
+    <id>http://example.com/2020/09/27/%E4%BD%BF%E7%94%A8yarn%E4%B8%8B%E8%BD%BD%E5%85%A8%E5%B1%80%E5%8C%85%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/</id>
+    <published>2020-09-26T17:49:04.000Z</published>
+    <updated>2020-09-26T18:25:16.724Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;yarn安装全局包不能全局使用的问题&quot;&gt;&lt;a href=&quot;#yarn安装全局包不能全局使用的问题&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Web前端" scheme="http://example.com/categories/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="node" scheme="http://example.com/categories/Web%E5%89%8D%E7%AB%AF/node/"/>
+    
+    
+    <category term="前端" scheme="http://example.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="node" scheme="http://example.com/tags/node/"/>
+    
+    <category term="yarn" scheme="http://example.com/tags/yarn/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue中级的笔记</title>
+    <link href="http://example.com/2020/09/27/vue%E4%B8%AD%E7%BA%A7%E7%9A%84%E7%AC%94%E8%AE%B0/"/>
+    <id>http://example.com/2020/09/27/vue%E4%B8%AD%E7%BA%A7%E7%9A%84%E7%AC%94%E8%AE%B0/</id>
+    <published>2020-09-26T16:51:18.000Z</published>
+    <updated>2020-09-26T18:28:37.929Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Vue-Cli-脚手架&quot;&gt;&lt;a href=&quot;#Vue-Cli-脚手架&quot; class=&quot;headerlink&quot; title=&quot;Vue Cli(脚手架)&quot;&gt;&lt;/a&gt;Vue Cli(脚手架)&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Web前端" scheme="http://example.com/categories/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="webpack" scheme="http://example.com/categories/Web%E5%89%8D%E7%AB%AF/webpack/"/>
+    
+    
+    <category term="前端" scheme="http://example.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="vue" scheme="http://example.com/tags/vue/"/>
+    
+  </entry>
+  
+  <entry>
     <title>webpack的使用</title>
     <link href="http://example.com/2020/09/23/webpack%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <id>http://example.com/2020/09/23/webpack%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
     <published>2020-09-23T05:40:21.000Z</published>
-    <updated>2020-09-26T10:45:16.143Z</updated>
+    <updated>2020-09-26T16:48:18.186Z</updated>
     
     
-    <summary type="html">&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;#webpack%E4%B8%AD%E7%9A%84loader&quot;&gt;webpack中的loader&lt;/a&gt;&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;#loader%E7%9A%84%E4%BD%9C%E7%94%A8&quot;&gt;loader的作用&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#loader%E7%9A%84%E4%BD%BF%E7%94%A8&quot;&gt;loader的使用&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#webpack%E7%9A%84loader&quot;&gt;webpack的loader&lt;/a&gt;&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;#css-loader-%E5%92%8C-style-loader&quot;&gt;css-loader 和 style-loader&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#less-loader&quot;&gt;less-loader&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#url-loader&quot;&gt;url-loader&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#file-loader&quot;&gt;file-loader&lt;/a&gt;&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;#%E5%85%B3%E4%BA%8E%E7%94%9F%E6%88%90%E7%9A%84%E6%96%87%E4%BB%B6%E5%90%8D&quot;&gt;关于生成的文件名&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#babel-loader&quot;&gt;babel-loader&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#webpack%E9%85%8D%E7%BD%AEvue&quot;&gt;webpack配置Vue&lt;/a&gt;&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;#vue%E6%A8%A1%E5%9D%97&quot;&gt;Vue模块&lt;/a&gt;&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;#%E8%BF%90%E8%A1%8C%E6%97%B6%E7%9A%84%E9%94%99%E8%AF%AF-%E6%A8%A1%E6%9D%BF%E7%BC%96%E8%AF%91%E5%99%A8&quot;&gt;运行时的错误-模板编译器&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E5%88%9B%E5%BB%BAvue%E6%97%B6el%E5%92%8Ctemplate%E7%9A%84%E5%85%B3%E7%B3%BB&quot;&gt;创建Vue时el和template的关系&lt;/a&gt;&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;#vue%E5%AE%9E%E4%BE%8B%E4%B8%AD%E7%9A%84template%E5%B1%9E%E6%80%A7&quot;&gt;Vue实例中的template属性&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E5%88%86%E7%A6%BB%E5%86%99%E6%B3%95&quot;&gt;分离写法&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E6%A8%A1%E5%9D%97%E5%8C%96-%E5%9C%A8js%E6%96%87%E4%BB%B6%E4%B8%AD%E5%AF%BC%E5%87%BA&quot;&gt;模块化 - 在js文件中导出&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E6%A8%A1%E5%9D%97%E5%8C%96-%E5%9C%A8%E6%96%87%E4%BB%B6%E4%B8%AD%E9%85%8D%E7%BD%AE&quot;&gt;模块化 - 在文件中配置&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#webpack%E7%9A%84plugin%E6%8F%92%E4%BB%B6&quot;&gt;webpack的plugin(插件)&lt;/a&gt;&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;#%E4%BB%80%E4%B9%88%E6%98%AFplugin&quot;&gt;什么是plugin？&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#plugin%E5%92%8Cloader%E7%9A%84%E5%8C%BA%E5%88%AB&quot;&gt;plugin和loader的区别&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#plugin%E7%9A%84%E4%BD%BF%E7%94%A8&quot;&gt;plugin的使用&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#webpack%E7%9A%84%E5%90%84%E7%A7%8Dplugins&quot;&gt;webpack的各种plugins&lt;/a&gt;&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;#bannerplugin%E6%8F%92%E4%BB%B6&quot;&gt;BannerPlugin插件&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#htmlwebpackplugin%E6%8F%92%E4%BB%B6&quot;&gt;HtmlWebpackPlugin插件&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#uglifyjswebpackplugin%E6%8F%92%E4%BB%B6&quot;&gt;UglifyjsWebpackPlugin插件&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&quot;webpack中的loader&quot;&gt;&lt;a href=&quot;#webpack中的loader&quot; class=&quot;headerlink&quot; title=&quot;webpack中的loader&quot;&gt;&lt;/a&gt;webpack中的&lt;strong&gt;loader&lt;/strong&gt;&lt;/h1&gt;&lt;h2 id=&quot;loader的作用&quot;&gt;&lt;a href=&quot;#loader的作用&quot; class=&quot;headerlink&quot; title=&quot;loader的作用&quot;&gt;&lt;/a&gt;loader的作用&lt;/h2&gt;&lt;ol&gt;
+    <summary type="html">&lt;h1 id=&quot;webpack中的loader&quot;&gt;&lt;a href=&quot;#webpack中的loader&quot; class=&quot;headerlink&quot; title=&quot;webpack中的loader&quot;&gt;&lt;/a&gt;webpack中的&lt;strong&gt;loader&lt;/strong&gt;&lt;/h1&gt;&lt;h2 id=&quot;loader的作用&quot;&gt;&lt;a href=&quot;#loader的作用&quot; class=&quot;headerlink&quot; title=&quot;loader的作用&quot;&gt;&lt;/a&gt;loader的作用&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;在之前的案例中，主要是使用webpack来处理所写的JS代码，并通过webpack来自动处理他们之间的依赖。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;但是在实际开发中并不只JS文件的处理，还会加载css文件、图片等，对于webpack本身来说，对于这些转化是不支持的。&lt;/p&gt;
