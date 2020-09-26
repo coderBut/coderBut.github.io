@@ -271,7 +271,8 @@
   <entry>
     <title>webpack的plugin(插件)</title>
     <url>/2020/09/26/webpack%E7%9A%84plugin(%E6%8F%92%E4%BB%B6)/</url>
-    <content><![CDATA[<h1 id="什么是plugin？"><a href="#什么是plugin？" class="headerlink" title="什么是plugin？"></a>什么是plugin？</h1><p>🦆    plugin是插件的意思，通常是用于对某个现有的架构进行扩展；</p>
+    <content><![CDATA[<p>[toc]</p>
+<h1 id="什么是plugin？"><a href="#什么是plugin？" class="headerlink" title="什么是plugin？"></a>什么是plugin？</h1><p>🦆    plugin是插件的意思，通常是用于对某个现有的架构进行扩展；</p>
 <p>🦆    webpack中的插件，就是对webpack现有功能的各种扩展，比如打包优化，文件压缩等等。</p>
 <h1 id="plugin和loader的区别"><a href="#plugin和loader的区别" class="headerlink" title="plugin和loader的区别"></a>plugin和loader的区别</h1><p>👁️    loader主要用于转换某些类型的模块，它是一个<strong>转换器</strong>；</p>
 <p>👁️    plugin是插件，它是对webpack本身的扩展，是一个<strong>扩展器</strong>。</p>
@@ -310,6 +311,25 @@
 <p><img src="https://cdn.jsdelivr.net/gh/coderbut/heyuhangspic/img/Snipaste20200926013926906.png" alt="自动引入了bundle.js"></p>
 <p>注： 由于现在index和bundle文件打包在同一目录下,所以我们不再需要使用webpack.config.js文件中的<code>publicPath</code>属性来指定路径。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/coderbut/heyuhangspic/img/Snipaste202009260151467761223.png" alt="注释掉publicPate"></p>
+</li>
+</ol>
+<h2 id="UglifyjsWebpackPlugin插件"><a href="#UglifyjsWebpackPlugin插件" class="headerlink" title="UglifyjsWebpackPlugin插件"></a>UglifyjsWebpackPlugin插件</h2><h3 id="作用-2"><a href="#作用-2" class="headerlink" title="作用"></a>作用</h3><p>压缩打包好的js文件。使js文件变得可读性差。</p>
+<h3 id="具体使用-2"><a href="#具体使用-2" class="headerlink" title="具体使用"></a>具体使用</h3><ol>
+<li><p>安装插件(安装1.1.0版本，高版本报错)；</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install uglifyjs-webpack-plugin@1.1.0 --save-dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在webpack.config.js中配置；</p>
+<ul>
+<li><p>引入</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//引入UglifyWebpackPlugin插件</span></span><br><span class="line"><span class="keyword">const</span> UglifyWebpackPlugin = <span class="built_in">require</span>(<span class="string">&#x27;uglifyjs-webpack-plugin&#x27;</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置plugins</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> UglifyWebpackPlugin()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>再次打包，找到bundle.js文件查看。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/coderbut/heyuhangspic/img/Snipaste20200926150047481.png" alt="压缩混淆之后"></p>
 </li>
 </ol>
 ]]></content>
