@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>webpack中的loader</title>
-    <url>/2020/09/23/webpack%E4%B8%AD%E7%9A%84loader/</url>
+    <title>webpack的使用</title>
+    <url>/2020/09/23/webpack%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<ol>
+<li><a href="#webpack%E4%B8%AD%E7%9A%84loader">webpack中的loader</a><ol>
 <li><a href="#loader%E7%9A%84%E4%BD%9C%E7%94%A8">loader的作用</a></li>
 <li><a href="#loader%E7%9A%84%E4%BD%BF%E7%94%A8">loader的使用</a></li>
-<li><a href="#loader">loader</a><ol>
+<li><a href="#webpack%E7%9A%84loader">webpack的loader</a><ol>
 <li><a href="#css-loader-%E5%92%8C-style-loader">css-loader 和 style-loader</a></li>
 <li><a href="#less-loader">less-loader</a></li>
-<li><a href="#url-loader">url-loader</a><ol>
-<li><a href="#%E4%BD%9C%E7%94%A8">作用</a></li>
-<li><a href="#%E5%AE%89%E8%A3%85">安装</a></li>
-<li><a href="#%E4%BD%BF%E7%94%A8">使用</a></li>
-</ol>
-</li>
+<li><a href="#url-loader">url-loader</a></li>
 <li><a href="#file-loader">file-loader</a><ol>
 <li><a href="#%E5%85%B3%E4%BA%8E%E7%94%9F%E6%88%90%E7%9A%84%E6%96%87%E4%BB%B6%E5%90%8D">关于生成的文件名</a></li>
 </ol>
@@ -22,9 +18,36 @@
 <li><a href="#babel-loader">babel-loader</a></li>
 </ol>
 </li>
-<li><a href="#%E6%AD%A4%E7%AB%A0%E5%AE%8C%E7%BB%93">此章完结</a></li>
 </ol>
-<h1 id="loader的作用"><a href="#loader的作用" class="headerlink" title="loader的作用"></a>loader的作用</h1><ol>
+</li>
+<li><a href="#webpack%E9%85%8D%E7%BD%AEvue">webpack配置Vue</a><ol>
+<li><a href="#vue%E6%A8%A1%E5%9D%97">Vue模块</a><ol>
+<li><a href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E7%9A%84%E9%94%99%E8%AF%AF-%E6%A8%A1%E6%9D%BF%E7%BC%96%E8%AF%91%E5%99%A8">运行时的错误-模板编译器</a></li>
+</ol>
+</li>
+<li><a href="#%E5%88%9B%E5%BB%BAvue%E6%97%B6el%E5%92%8Ctemplate%E7%9A%84%E5%85%B3%E7%B3%BB">创建Vue时el和template的关系</a><ol>
+<li><a href="#vue%E5%AE%9E%E4%BE%8B%E4%B8%AD%E7%9A%84template%E5%B1%9E%E6%80%A7">Vue实例中的template属性</a></li>
+<li><a href="#%E5%88%86%E7%A6%BB%E5%86%99%E6%B3%95">分离写法</a></li>
+<li><a href="#%E6%A8%A1%E5%9D%97%E5%8C%96-%E5%9C%A8js%E6%96%87%E4%BB%B6%E4%B8%AD%E5%AF%BC%E5%87%BA">模块化 - 在js文件中导出</a></li>
+<li><a href="#%E6%A8%A1%E5%9D%97%E5%8C%96-%E5%9C%A8%E6%96%87%E4%BB%B6%E4%B8%AD%E9%85%8D%E7%BD%AE">模块化 - 在文件中配置</a></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a href="#webpack%E7%9A%84plugin%E6%8F%92%E4%BB%B6">webpack的plugin(插件)</a><ol>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AFplugin">什么是plugin？</a></li>
+<li><a href="#plugin%E5%92%8Cloader%E7%9A%84%E5%8C%BA%E5%88%AB">plugin和loader的区别</a></li>
+<li><a href="#plugin%E7%9A%84%E4%BD%BF%E7%94%A8">plugin的使用</a></li>
+<li><a href="#webpack%E7%9A%84%E5%90%84%E7%A7%8Dplugins">webpack的各种plugins</a><ol>
+<li><a href="#bannerplugin%E6%8F%92%E4%BB%B6">BannerPlugin插件</a></li>
+<li><a href="#htmlwebpackplugin%E6%8F%92%E4%BB%B6">HtmlWebpackPlugin插件</a></li>
+<li><a href="#uglifyjswebpackplugin%E6%8F%92%E4%BB%B6">UglifyjsWebpackPlugin插件</a></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="webpack中的loader"><a href="#webpack中的loader" class="headerlink" title="webpack中的loader"></a>webpack中的<strong>loader</strong></h1><h2 id="loader的作用"><a href="#loader的作用" class="headerlink" title="loader的作用"></a>loader的作用</h2><ol>
 <li><p>在之前的案例中，主要是使用webpack来处理所写的JS代码，并通过webpack来自动处理他们之间的依赖。</p>
 </li>
 <li><p>但是在实际开发中并不只JS文件的处理，还会加载css文件、图片等，对于webpack本身来说，对于这些转化是不支持的。</p>
@@ -34,11 +57,11 @@
 
 </li>
 </ol>
-<h1 id="loader的使用"><a href="#loader的使用" class="headerlink" title="loader的使用"></a>loader的使用</h1><ol>
+<h2 id="loader的使用"><a href="#loader的使用" class="headerlink" title="loader的使用"></a>loader的使用</h2><ol>
 <li>通过npm安装所需要的loader。(<a href="https://www.webpackjs.com/">webpack中文官网</a>)</li>
 <li>webpack.config.js中的modules属性下配置。</li>
 </ol>
-<h1 id="loader"><a href="#loader" class="headerlink" title="loader"></a>loader</h1><h2 id="css-loader-和-style-loader"><a href="#css-loader-和-style-loader" class="headerlink" title="css-loader 和 style-loader"></a>css-loader 和 style-loader</h2><p>当没有使用css-loader时，直接在main.js文件中引用依赖然后打包：</p>
+<h2 id="webpack的loader"><a href="#webpack的loader" class="headerlink" title="webpack的loader"></a>webpack的loader</h2><h3 id="css-loader-和-style-loader"><a href="#css-loader-和-style-loader" class="headerlink" title="css-loader 和 style-loader"></a>css-loader 和 style-loader</h3><p>当没有使用css-loader时，直接在main.js文件中引用依赖然后打包：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//normal.css</span></span><br><span class="line">body &#123;</span><br><span class="line">	background-color: pink;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//main.js</span></span><br><span class="line"><span class="keyword">const</span> &#123;name,age,say,run&#125; = <span class="built_in">require</span>(<span class="string">&#x27;./js/info.js&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(name);</span><br><span class="line"><span class="built_in">console</span>.log(age);</span><br><span class="line"><span class="built_in">console</span>.log(say);</span><br><span class="line">run();</span><br><span class="line"></span><br><span class="line"><span class="comment">//依赖CSS文件，使得webpack打包时会处理normal.css文件</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">&#x27;./css/normal.css&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
 <p>控制台会输出如下错误：</p>
@@ -48,9 +71,9 @@
 
 <blockquote>
 <p> 注： 如果只是安装css-loader并打包，在DOM中并不会显示出css文件定义的效果。因为css-loader只是<strong>将css文件加载</strong>，想要将加载好的css文件渲染到DOM中，还需要安装<strong>style-loader</strong>(<code>npm install style-loader --save-dev</code>)；</p>
-<p>在使用<code> use: [ &#39;style-loader&#39;, &#39;css-loader&#39; ]</code>这个语句时，应注意在使用多个loader时，loader的执行顺序是从右往左，所以应该将style-loader放在左边，先执行css-loader加载css文件之后，再由style-loader渲染到DOM中。</p>
+<p> 在使用<code> use: [ &#39;style-loader&#39;, &#39;css-loader&#39; ]</code>这个语句时，应注意在使用多个loader时，loader的执行顺序是从右往左，所以应该将style-loader放在左边，先执行css-loader加载css文件之后，再由style-loader渲染到DOM中。</p>
 </blockquote>
-<h2 id="less-loader"><a href="#less-loader" class="headerlink" title="less-loader"></a>less-loader</h2><blockquote>
+<h3 id="less-loader"><a href="#less-loader" class="headerlink" title="less-loader"></a>less-loader</h3><blockquote>
 <p>Less 是一门 <strong>CSS 预处理语言</strong>，它扩展了 CSS 语言，增加了变量、Mixin、函数等特性，使 CSS 更易维护和扩展。</p>
 </blockquote>
 <p><strong>less-loader</strong>用于处理JS文件中对less文件的依赖。</p>
@@ -67,13 +90,13 @@
 
 </li>
 </ol>
-<h2 id="url-loader"><a href="#url-loader" class="headerlink" title="url-loader"></a>url-loader</h2><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>使用<code>url-loader</code>加载css样式中的一些图片等文件。</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>使用指令：<code>npm install --save-dev url-loader</code>。</p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>在<strong>webpack.config.js</strong>中配置：</p>
+<h3 id="url-loader"><a href="#url-loader" class="headerlink" title="url-loader"></a>url-loader</h3><h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><p>使用<code>url-loader</code>加载css样式中的一些图片等文件。</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>使用指令：<code>npm install --save-dev url-loader</code>。</p>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>在<strong>webpack.config.js</strong>中配置：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> test: <span class="regexp">/\.(png|jpg|gif)$/</span>,</span><br><span class="line"> use: [&#123;</span><br><span class="line">  loader: <span class="string">&#x27;url-loader&#x27;</span>,</span><br><span class="line">  options: &#123;</span><br><span class="line">   <span class="comment">//当文件小于limit所定义的数值时，会将图片编译成base64字符串形式。</span></span><br><span class="line">   <span class="comment">//当图片大于limit定义的数值时，打包会报错，就需要使用file-loader模块进行加载。</span></span><br><span class="line">   limit: <span class="number">13000</span></span><br><span class="line">  &#125;</span><br><span class="line"> &#125;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p> 🔊如果插入的图片过大，就需要使用 file-loader模块进行加载。</p>
-<h2 id="file-loader"><a href="#file-loader" class="headerlink" title="file-loader"></a>file-loader</h2><blockquote>
+<h3 id="file-loader"><a href="#file-loader" class="headerlink" title="file-loader"></a>file-loader</h3><blockquote>
 <p>用于处理<strong>大文件</strong>的加载.</p>
 </blockquote>
 <ol>
@@ -102,7 +125,7 @@
 
 <table><tr><td bgcolor=PowderBlue>💡当index.html文件也在<b>dist</b>文件夹下，<br />则不需要再使用 <i>publicPath: 'dist/'</i>指令</td></tr></table>
 
-<h3 id="关于生成的文件名"><a href="#关于生成的文件名" class="headerlink" title="关于生成的文件名"></a>关于生成的文件名</h3><ul>
+<h4 id="关于生成的文件名"><a href="#关于生成的文件名" class="headerlink" title="关于生成的文件名"></a>关于生成的文件名</h4><ul>
 <li><p>webpack会在打包时将文件放入打包文件的同一目录下，并且会生成一个32位的hash值，防止文件命名重复。</p>
 </li>
 <li><p>但是在实际的开发中，我们可能对打包的名字有一定的要求——比如，将所有的图片放在一个文件夹中，但是需要跟上原来的名字，同时还要防止重复。</p>
@@ -124,31 +147,20 @@
 
 
 
-<h2 id="babel-loader"><a href="#babel-loader" class="headerlink" title="babel-loader"></a>babel-loader</h2><p><font color="green">🏆我们上述的打包文件中会有ES6的语法，当浏览器不支持ES6时会无法正常渲染，所以我们需要使用babel-loader模块完成转换。</font></p>
+<h3 id="babel-loader"><a href="#babel-loader" class="headerlink" title="babel-loader"></a>babel-loader</h3><p><font color="green">🏆我们上述的打包文件中会有ES6的语法，当浏览器不支持ES6时会无法正常渲染，所以我们需要使用babel-loader模块完成转换。</font></p>
 <ul>
 <li><p>安装：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm install babel-loader babel-core babel-preset-env webpack</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>配置： </p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">	<span class="comment">//由于最后打包完成并运行node依赖文件并不参加，所以使用exclude将文件排除</span></span><br><span class="line"> exclude: <span class="regexp">/(node_modules|bower_components)/</span>,</span><br><span class="line"> use: &#123;</span><br><span class="line"> 	loader: <span class="string">&#x27;babel-loader&#x27;</span>,</span><br><span class="line"> 	options: &#123;</span><br><span class="line">	 <span class="comment">// presets: [&#x27;@babel/preset-env&#x27;]</span></span><br><span class="line">	<span class="comment">// 为什么使用2015版本不知</span></span><br><span class="line">	presets: [<span class="string">&#x27;es2015&#x27;</span>]</span><br><span class="line"> 	&#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">	<span class="comment">//由于最后打包完成并运行node依赖文件并不参加，所以使用exclude将文件排除</span></span><br><span class="line"> exclude: <span class="regexp">/(node_modules|bower_components)/</span>,</span><br><span class="line"> use: &#123;</span><br><span class="line"> 	loader: <span class="string">&#x27;babel-loader&#x27;</span>,</span><br><span class="line"> 	options: &#123;</span><br><span class="line">	 <span class="comment">// presets: [&#x27;@babel/preset-env&#x27;]</span></span><br><span class="line">		<span class="comment">// 为什么使用2015版本不知</span></span><br><span class="line">		presets: [<span class="string">&#x27;es2015&#x27;</span>]</span><br><span class="line"> 	&#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>再次运行<code>npm run build</code>。打包完成，然后进入打包好的文件<strong>bundle.js</strong>搜索ES6的语法(如<code>let</code>,<code>const</code>)，没有搜到，说明已经成功将ES6的语法转化为ES5。<br><img src="https://cdn.jsdelivr.net/gh/coderbut/blogimg/whatever/20200924181951.png" alt="没有const"><br><img src="https://cdn.jsdelivr.net/gh/coderbut/blogimg/whatever/20200924182035.png" alt="没有let"></li>
 </ul>
 </li>
 </ul>
-<h1 id="此章完结"><a href="#此章完结" class="headerlink" title="此章完结"></a>此章完结</h1>]]></content>
-      <categories>
-        <category>Web前端</category>
-        <category>webpack</category>
-      </categories>
-      <tags>
-        <tag>前端</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>webpack配置Vue</title>
-    <url>/2020/09/24/webpack%E9%85%8D%E7%BD%AEVue/</url>
-    <content><![CDATA[<h1 id="Vue模块"><a href="#Vue模块" class="headerlink" title="Vue模块"></a>Vue模块</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>在之前的学习过程中，在项目中引用Vue大致是使用两种方法：</p>
+<h1 id="webpack配置Vue"><a href="#webpack配置Vue" class="headerlink" title="webpack配置Vue"></a>webpack<strong>配置Vue</strong></h1><h2 id="Vue模块"><a href="#Vue模块" class="headerlink" title="Vue模块"></a>Vue模块</h2><h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><p>在之前的学习过程中，在项目中引用Vue大致是使用两种方法：</p>
 <ol>
 <li><p>下载Vue.js文件，然后通过<code>&lt;script&gt;</code>标签引入；</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;../js/vue.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -163,7 +175,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install vue --save</span><br></pre></td></tr></table></figure>
 
 <p><font color="green">注：由于Vue在运行时也是需要依赖的，所以不需要使用<code>--save-dev。</code></font></p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ol>
+<h3 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h3><ol>
 <li><p>在js文件中使用vue进行开发：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//使用vue进行开发</span></span><br><span class="line"><span class="comment">//导入vue模块，引号中的vue就是安装好的vue模块</span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">&#x27;#app&#x27;</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    msg: <span class="string">&#x27;hello webpack&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 </li>
@@ -172,7 +184,7 @@
 
 </li>
 </ol>
-<h2 id="运行时的错误-模板编译器"><a href="#运行时的错误-模板编译器" class="headerlink" title="运行时的错误-模板编译器"></a>运行时的错误-模板编译器</h2><ol>
+<h3 id="运行时的错误-模板编译器"><a href="#运行时的错误-模板编译器" class="headerlink" title="运行时的错误-模板编译器"></a>运行时的错误-模板编译器</h3><ol>
 <li><p>并没有执行，浏览器会抛出一个错误：<br><img src="https://cdn.jsdelivr.net/gh/coderbut/blogimg/whatever/image-20200924224202310.png" alt="正在使用vue的runtime-only版本，模板编译器不可用。"></p>
 <p>🗨️这是由于vue模块有两个版本：<code>runtime-only</code> 和 <code>runtime-compiler</code>：</p>
 <ul>
@@ -189,11 +201,11 @@
 <li><p>再次<code>npm run build</code>，就可以在浏览器中正常渲染啦！<br><img src="https://cdn.jsdelivr.net/gh/coderbut/blogimg/whatever/1154545454545454.jpg" alt="hello webpack"></p>
 </li>
 </ol>
-<h1 id="创建Vue时el和template的关系"><a href="#创建Vue时el和template的关系" class="headerlink" title="创建Vue时el和template的关系"></a>创建Vue时el和template的关系</h1><blockquote>
+<h2 id="创建Vue时el和template的关系"><a href="#创建Vue时el和template的关系" class="headerlink" title="创建Vue时el和template的关系"></a>创建Vue时el和template的关系</h2><blockquote>
 <p>在上面的代码可以正常运行后，有一个问题出现了：</p>
 <p>❓ 当我们后续想要添加或修改data或其他属性的引用方式，我们就需要在index.html中修改相应的代码。那么有没有一种方法可以使我们在js文件中就可以修改呢？</p>
 </blockquote>
-<h2 id="Vue实例中的template属性"><a href="#Vue实例中的template属性" class="headerlink" title="Vue实例中的template属性"></a>Vue实例中的template属性</h2><p>答案是我们可以在Vue实例中定义一个<strong>template</strong>属性：</p>
+<h3 id="Vue实例中的template属性"><a href="#Vue实例中的template属性" class="headerlink" title="Vue实例中的template属性"></a>Vue实例中的template属性</h3><p>答案是我们可以在Vue实例中定义一个<strong>template</strong>属性：</p>
 <ul>
 <li><p>在之前，我们只是定义了el属性，使得Vue实例对html中一个元素进行绑定；</p>
 </li>
@@ -203,7 +215,7 @@
 <li><p>完成之后即使html页面只有一个div#app元素，也可以正常渲染。有利于文件的分离。<br><img src="https://cdn.jsdelivr.net/gh/coderbut/blogimg/whatever/image-20200925003902466.png" alt="正常渲染"></p>
 </li>
 </ul>
-<h2 id="分离写法"><a href="#分离写法" class="headerlink" title="分离写法"></a>分离写法</h2><p>在上面，使用了Vue实例中的template属性，从而使前端html文件中只有一个div#app的元素。</p>
+<h3 id="分离写法"><a href="#分离写法" class="headerlink" title="分离写法"></a>分离写法</h3><p>在上面，使用了Vue实例中的template属性，从而使前端html文件中只有一个div#app的元素。</p>
 <p>我们可以定义一个子组件，将属性从Vue实例中分离出来：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> App = &#123;</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;div&gt;</span></span><br><span class="line"><span class="string">    &lt;h2&gt;&#123;&#123; msg &#125;&#125;&lt;/h2&gt;</span></span><br><span class="line"><span class="string">    &lt;h2&gt;&#123;&#123; name &#125;&#125;&lt;/h2&gt;</span></span><br><span class="line"><span class="string">    &lt;button @click=&quot;btnClick&quot;&gt;点击事件&lt;/button&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">  `</span>,</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      msg: <span class="string">&#x27;hello webpack&#x27;</span>,</span><br><span class="line">      name: <span class="string">&#x27;coderbut&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    btnClick() &#123;</span><br><span class="line">      alert(<span class="string">&#x27;alert&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -212,7 +224,7 @@
 
 <p>打包并运行，这样也可以得到相同的效果</p>
 <p><img src="https://cdn.jsdelivr.net/gh/coderbut/blogimg/whatever/20200925142500.png" alt="template: ‘&lt;App /&gt;’"></p>
-<h2 id="模块化-在js文件中导出"><a href="#模块化-在js文件中导出" class="headerlink" title="模块化 - 在js文件中导出"></a>模块化 - 在js文件中导出</h2><p>✨除了上述在一个js文件中定义一个子组件，还可以在另一个js文件中定义并导出，然后在mian.js文件中导入。</p>
+<h3 id="模块化-在js文件中导出"><a href="#模块化-在js文件中导出" class="headerlink" title="模块化 - 在js文件中导出"></a>模块化 - 在js文件中导出</h3><p>✨除了上述在一个js文件中定义一个子组件，还可以在另一个js文件中定义并导出，然后在mian.js文件中导入。</p>
 <ol>
 <li><p>定义一个App.js文件，并编辑。</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//App.js</span></span><br><span class="line"><span class="comment">//default表示导出一个模块并且由导入者命名</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;div&gt;</span></span><br><span class="line"><span class="string">    &lt;h2&gt;&#123;&#123; msg &#125;&#125;&lt;/h2&gt;</span></span><br><span class="line"><span class="string">    &lt;h2&gt;&#123;&#123; name &#125;&#125;&lt;/h2&gt;</span></span><br><span class="line"><span class="string">    &lt;button @click=&quot;btnClick&quot;&gt;点击事件&lt;/button&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">  `</span>,</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      msg: <span class="string">&#x27;hello webpack&#x27;</span>,</span><br><span class="line">      name: <span class="string">&#x27;coderbut&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    btnClick() &#123;</span><br><span class="line">      alert(<span class="string">&#x27;alert&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -222,7 +234,7 @@
 <li><p>打包并运行，依然可以得到相同的效果。</p>
 </li>
 </ol>
-<h2 id="模块化-在-vue文件中配置"><a href="#模块化-在-vue文件中配置" class="headerlink" title="模块化 - 在.vue文件中配置"></a>模块化 - 在<code>.vue</code>文件中配置</h2><p>在使用vue模块中，我们可以定义后缀为<code>.vue</code>的文件，在里面定义属性模板，之后在js文件中引用。</p>
+<h3 id="模块化-在-vue文件中配置"><a href="#模块化-在-vue文件中配置" class="headerlink" title="模块化 - 在.vue文件中配置"></a>模块化 - 在<code>.vue</code>文件中配置</h3><p>在使用vue模块中，我们可以定义后缀为<code>.vue</code>的文件，在里面定义属性模板，之后在js文件中引用。</p>
 <ol>
 <li><p>首先创建一个App.vue文件。<br><img src="https://cdn.jsdelivr.net/gh/serystal/heyuhangspic/img/Snipaste20200925154258521.jpg" alt="vue文件模板"></p>
 </li>
@@ -259,36 +271,23 @@
 <p><img src="https://cdn.jsdelivr.net/gh/coderbut/heyuhangspic/img/Snipaste20200925213653022.png" alt="执行效果"></p>
 </li>
 </ol>
-]]></content>
-      <categories>
-        <category>Web前端</category>
-        <category>webpack</category>
-      </categories>
-      <tags>
-        <tag>前端</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>webpack的plugin(插件)</title>
-    <url>/2020/09/26/webpack%E7%9A%84plugin(%E6%8F%92%E4%BB%B6)/</url>
-    <content><![CDATA[<p>[toc]</p>
-<h1 id="什么是plugin？"><a href="#什么是plugin？" class="headerlink" title="什么是plugin？"></a>什么是plugin？</h1><p>🦆    plugin是插件的意思，通常是用于对某个现有的架构进行扩展；</p>
+<h1 id="webpack的plugin-插件"><a href="#webpack的plugin-插件" class="headerlink" title="webpack的plugin(插件)"></a>webpack的<strong>plugin(插件)</strong></h1><h2 id="什么是plugin？"><a href="#什么是plugin？" class="headerlink" title="什么是plugin？"></a>什么是plugin？</h2><p>🦆    plugin是插件的意思，通常是用于对某个现有的架构进行扩展；</p>
 <p>🦆    webpack中的插件，就是对webpack现有功能的各种扩展，比如打包优化，文件压缩等等。</p>
-<h1 id="plugin和loader的区别"><a href="#plugin和loader的区别" class="headerlink" title="plugin和loader的区别"></a>plugin和loader的区别</h1><p>👁️    loader主要用于转换某些类型的模块，它是一个<strong>转换器</strong>；</p>
+<h2 id="plugin和loader的区别"><a href="#plugin和loader的区别" class="headerlink" title="plugin和loader的区别"></a>plugin和loader的区别</h2><p>👁️    loader主要用于转换某些类型的模块，它是一个<strong>转换器</strong>；</p>
 <p>👁️    plugin是插件，它是对webpack本身的扩展，是一个<strong>扩展器</strong>。</p>
-<h1 id="plugin的使用"><a href="#plugin的使用" class="headerlink" title="plugin的使用"></a>plugin的使用</h1><ol>
+<h2 id="plugin的使用"><a href="#plugin的使用" class="headerlink" title="plugin的使用"></a>plugin的使用</h2><ol>
 <li>通过npm安装需要使用plugins(某些webpack内置的插件无需安装)；</li>
 <li>在webpack.config.js文件中<code>plugins</code>中配置插件。</li>
 </ol>
-<h1 id="webpack的各种plugins"><a href="#webpack的各种plugins" class="headerlink" title="webpack的各种plugins"></a>webpack的各种plugins</h1><h2 id="BannerPlugin插件"><a href="#BannerPlugin插件" class="headerlink" title="BannerPlugin插件"></a>BannerPlugin插件</h2><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>BannerPlugin是webpack的<strong>自带插件</strong>，用来为打包的文件添加版本声明。</p>
-<h3 id="具体使用"><a href="#具体使用" class="headerlink" title="具体使用"></a>具体使用</h3><ol>
+<h2 id="webpack的各种plugins"><a href="#webpack的各种plugins" class="headerlink" title="webpack的各种plugins"></a>webpack的各种plugins</h2><h3 id="BannerPlugin插件"><a href="#BannerPlugin插件" class="headerlink" title="BannerPlugin插件"></a>BannerPlugin插件</h3><h4 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h4><p>BannerPlugin是webpack的<strong>自带插件</strong>，用来为打包的文件添加版本声明。</p>
+<h4 id="具体使用"><a href="#具体使用" class="headerlink" title="具体使用"></a>具体使用</h4><ol>
 <li><p>修改webpack.config.js文件(由于是自带插件，所以不需要安装)：</p>
 <ul>
 <li><p>首先导入webpack模块</p>
-   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//导入webpack</span></span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">&#x27;webpack&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//导入webpack</span></span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">&#x27;webpack&#x27;</span>);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>然后在属性中添加<code>plugins</code>属性并定义</p>
-   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">	<span class="keyword">new</span> webpack.BannerPlugin(<span class="string">&#x27;最终版权归coderbut所有&#x27;</span>)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">	<span class="keyword">new</span> webpack.BannerPlugin(<span class="string">&#x27;最终版权归coderbut所有&#x27;</span>)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -296,10 +295,10 @@
 <p><img src="https://cdn.jsdelivr.net/gh/coderbut/heyuhangspic/img/Snipaste20200926004815291.png" alt="BannerPlugin"></p>
 </li>
 </ol>
-<h2 id="HtmlWebpackPlugin插件"><a href="#HtmlWebpackPlugin插件" class="headerlink" title="HtmlWebpackPlugin插件"></a>HtmlWebpackPlugin插件</h2><p>目前我们的index.html是存放于<strong>根目录</strong>下的，在发布项目时，只是会发布<code>dist</code>文件夹，但是如果该文件夹下没有index.html文件，那么打包好的js文件也就无法使用了，所以我们需要将index.html文件也打包到dist文件夹中，这时就需要使用<code>HtmlWerbpackPlugin</code>插件了。</p>
-<h3 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h3><p>▶️&emsp;自动生成一个index.html文件(可以指定模板生成)；</p>
+<h3 id="HtmlWebpackPlugin插件"><a href="#HtmlWebpackPlugin插件" class="headerlink" title="HtmlWebpackPlugin插件"></a>HtmlWebpackPlugin插件</h3><p>目前我们的index.html是存放于<strong>根目录</strong>下的，在发布项目时，只是会发布<code>dist</code>文件夹，但是如果该文件夹下没有index.html文件，那么打包好的js文件也就无法使用了，所以我们需要将index.html文件也打包到dist文件夹中，这时就需要使用<code>HtmlWerbpackPlugin</code>插件了。</p>
+<h4 id="作用-2"><a href="#作用-2" class="headerlink" title="作用"></a>作用</h4><p>▶️&emsp;自动生成一个index.html文件(可以指定模板生成)；</p>
 <p>▶️&emsp;将打包好的js文件，通过<code>&lt;script&gt;</code>标签插入到<code>&lt;body&gt;</code>中。</p>
-<h3 id="具体使用-1"><a href="#具体使用-1" class="headerlink" title="具体使用"></a>具体使用</h3><ol>
+<h4 id="具体使用-1"><a href="#具体使用-1" class="headerlink" title="具体使用"></a>具体使用</h4><ol>
 <li><p>安装插件(学习的时候安装3.2.0版本，高版本会报错)</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install html-webpack-plugin@3.2.0 --save-dev</span><br></pre></td></tr></table></figure>
 </li>
@@ -313,8 +312,8 @@
 <p><img src="https://cdn.jsdelivr.net/gh/coderbut/heyuhangspic/img/Snipaste202009260151467761223.png" alt="注释掉publicPate"></p>
 </li>
 </ol>
-<h2 id="UglifyjsWebpackPlugin插件"><a href="#UglifyjsWebpackPlugin插件" class="headerlink" title="UglifyjsWebpackPlugin插件"></a>UglifyjsWebpackPlugin插件</h2><h3 id="作用-2"><a href="#作用-2" class="headerlink" title="作用"></a>作用</h3><p>压缩打包好的js文件。使js文件变得可读性差。</p>
-<h3 id="具体使用-2"><a href="#具体使用-2" class="headerlink" title="具体使用"></a>具体使用</h3><ol>
+<h3 id="UglifyjsWebpackPlugin插件"><a href="#UglifyjsWebpackPlugin插件" class="headerlink" title="UglifyjsWebpackPlugin插件"></a>UglifyjsWebpackPlugin插件</h3><h4 id="作用-3"><a href="#作用-3" class="headerlink" title="作用"></a>作用</h4><p>压缩打包好的js文件。使js文件变得可读性差。</p>
+<h4 id="具体使用-2"><a href="#具体使用-2" class="headerlink" title="具体使用"></a>具体使用</h4><ol>
 <li><p>安装插件(安装1.1.0版本，高版本报错)；</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install uglifyjs-webpack-plugin@1.1.0 --save-dev</span><br></pre></td></tr></table></figure>
 </li>
@@ -339,6 +338,8 @@
       </categories>
       <tags>
         <tag>前端</tag>
+        <tag>webpack</tag>
+        <tag>vue</tag>
       </tags>
   </entry>
 </search>
