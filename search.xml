@@ -394,13 +394,13 @@
 <li><p>webpack</p>
 </li>
 </ul>
-<h2 id="使用Vue-Cli"><a href="#使用Vue-Cli" class="headerlink" title="使用Vue Cli"></a>使用Vue Cli</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>由于npm实在太慢了，改用yarn安装。全局yarn安装方式：在终端执行<code>npm install -g yarn</code>。</p>
+<h2 id="使用Vue-Cli"><a href="#使用Vue-Cli" class="headerlink" title="使用Vue Cli"></a>使用Vue Cli</h2><p>由于npm实在太慢了，改用yarn安装。全局yarn安装方式：在终端执行<code>npm install -g yarn</code>。</p>
 <p>关于yarn还有一些坑：<a href="/2020/09/27/%E4%BD%BF%E7%94%A8yarn%E4%B8%8B%E8%BD%BD%E5%85%A8%E5%B1%80%E5%8C%85%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/" title="使用yarn下载全局包的一些坑">使用yarn下载全局包的一些坑</a>。</p>
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">#使用yarn全局安装Vue Cli</span><br><span class="line">yarn global add @vue/cli</span><br></pre></td></tr></table></figure>
 
 <p>ℹ️&emsp;注：如果使用<code>yarn global add vue-cli</code>则安装的是<strong>Vue Cli 2.x的版本</strong></p>
 <p>安装的是最新版，但是由于最新版本与Vue Cli2的<strong>初始化项目方式不同</strong>，如果有需要我们可以拉去2.x模板。</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">yarn global add @vue/cli-init</span><br><span class="line"># `vue init` 的运行效果将会跟 `vue-cli@2.x` 相同</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">yarn global add @vue/cli-init</span><br><span class="line"># `vue init` 的运行效果将会跟 `vue-cli@2.x` 相同</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><p>使用Vue Cli2初始化项目</p>
@@ -410,12 +410,9 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vue creat [项目名称]</span><br></pre></td></tr></table></figure>
 
 
-
-
-
 </li>
 </ul>
-]]></content>
+<h1 id="Vue-Cli2的使用"><a href="#Vue-Cli2的使用" class="headerlink" title="Vue Cli2的使用"></a>Vue Cli2的使用</h1>]]></content>
       <categories>
         <category>Web前端</category>
         <category>webpack</category>
@@ -454,6 +451,22 @@
         <tag>前端</tag>
         <tag>node</tag>
         <tag>yarn</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LOL壁纸</title>
+    <url>/2020/09/28/LOL%E5%A3%81%E7%BA%B8/</url>
+    <content><![CDATA[<p>还是不会在HEXO博客中整相册功能，就用分类和标签代替吧，用浏览器的Ctrl+F搜图。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/coderbut/heyuhangspic/img/wallhaven-oxzk1l.jpg" alt="拉克丝"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/coderbut/heyuhangspic/img/wallhaven-96kwvx.jpg" alt="阿卡丽-真实伤害"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/coderbut/heyuhangspic/img/wallhaven-lme3ep.jpg" alt="阿卡丽"></p>
+]]></content>
+      <categories>
+        <category>壁纸</category>
+      </categories>
+      <tags>
+        <tag>壁纸</tag>
+        <tag>图像</tag>
       </tags>
   </entry>
 </search>
