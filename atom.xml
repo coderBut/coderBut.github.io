@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-09-27T18:20:35.262Z</updated>
+  <updated>2020-09-26T18:25:16.724Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,34 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>LOL壁纸</title>
-    <link href="http://example.com/2020/09/28/LOL%E5%A3%81%E7%BA%B8/"/>
-    <id>http://example.com/2020/09/28/LOL%E5%A3%81%E7%BA%B8/</id>
-    <published>2020-09-27T17:35:50.000Z</published>
-    <updated>2020-09-27T18:20:35.262Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;还是不会在HEXO博客中整相册功能，就用分类和标签代替吧，用浏览器的Ctrl+F搜图。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/coderbut/heyuhangspic/img/wallhaven-oxzk1l.jpg&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="壁纸" scheme="http://example.com/categories/%E5%A3%81%E7%BA%B8/"/>
-    
-    
-    <category term="壁纸" scheme="http://example.com/tags/%E5%A3%81%E7%BA%B8/"/>
-    
-    <category term="图像" scheme="http://example.com/tags/%E5%9B%BE%E5%83%8F/"/>
-    
-  </entry>
   
   <entry>
     <title>使用yarn下载全局包的一些坑</title>
