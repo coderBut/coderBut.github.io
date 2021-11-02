@@ -1,6 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>使用yarn下载全局包的一些坑</title>
+    <url>/2020/09/27/%E4%BD%BF%E7%94%A8yarn%E4%B8%8B%E8%BD%BD%E5%85%A8%E5%B1%80%E5%8C%85%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/</url>
+    <content><![CDATA[<h1 id="yarn安装全局包不能全局使用的问题"><a href="#yarn安装全局包不能全局使用的问题" class="headerlink" title="yarn安装全局包不能全局使用的问题"></a>yarn安装全局包不能全局使用的问题</h1><p>使用yarn全局安装了**@vue/cli**</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yarn global add @vue&#x2F;cli</span><br></pre></td></tr></table></figure>
+
+<p>但是在终端中使用<code>vue --version</code>提示</p>
+<blockquote>
+<p>‘vue’ 不是内部或外部命令，也不是可运行的程序<br>或批处理文件。</p>
+</blockquote>
+<p>但是明明已经使用global add全局安装了呀！在网上找到了解决方法：</p>
+<ol>
+<li><p>在终端运行<code>yarn global bin</code>得到一个路径，是yarn全局bin文件的路径</p>
+<p><img src="https://cdn.jsdelivr.net/gh/coderbut/heyuhangspic/img/yarnbingggg.jpg" alt="yarnbingggg"></p>
+</li>
+<li><p>之后去到环境变量中，在Path变量中添加上面得到的路径；</p>
+</li>
+<li><p>重启终端，然后再次执行<code>vue --version</code>，就可以正常显示了。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Web前端</category>
+        <category>node</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>node</tag>
+        <tag>yarn</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vue中级的笔记</title>
+    <url>/2020/09/27/vue%E4%B8%AD%E7%BA%A7%E7%9A%84%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="Vue-Cli-脚手架"><a href="#Vue-Cli-脚手架" class="headerlink" title="Vue Cli(脚手架)"></a>Vue Cli(脚手架)</h1><blockquote>
+<p><a href="https://cli.vuejs.org/zh/guide/">Vue Cli文档</a></p>
+<p>如果只是写vue的demo程序可能使用不到Vue Cli，但是开发大型项目，就必然要使用Vue Cli。</p>
+<p>使用Vuejs开发大型应用时，我们需要考虑代码目录结构、项目结构和部署、热加载、代码单元测试等事情。如果每个项目都要手动完成这些工作，那无疑效率比较低效，所以通常我们会使用一些脚手架工具来帮助完成这些事情。</p>
+</blockquote>
+<h2 id="什么是Cli"><a href="#什么是Cli" class="headerlink" title="什么是Cli"></a>什么是Cli</h2><ul>
+<li>Cu是Command—Line Interface，翻译为命令行界面，但是俗称脚手架；</li>
+<li>Vue CL是一个官方发布vue.js项目脚手架；</li>
+<li>使用vue—cli可以快速搭建Vue开发环境以及对应的webpack配置.</li>
+</ul>
+<h2 id="Vue-Cli的前提"><a href="#Vue-Cli的前提" class="headerlink" title="Vue Cli的前提"></a>Vue Cli的前提</h2><ul>
+<li><p><strong>node</strong></p>
+<ul>
+<li><p>需要安装node和npm，使用npm安装模块或者插件速度慢的话也可以使用cnpm阿里镜像下载，速度可能会快点。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install cnpm -g --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>webpack</p>
+</li>
+</ul>
+<h2 id="使用Vue-Cli"><a href="#使用Vue-Cli" class="headerlink" title="使用Vue Cli"></a>使用Vue Cli</h2><p>由于npm实在太慢了，改用yarn安装。全局yarn安装方式：在终端执行<code>npm install -g yarn</code>。</p>
+<p>关于yarn还有一些坑：<a href="/2020/09/27/%E4%BD%BF%E7%94%A8yarn%E4%B8%8B%E8%BD%BD%E5%85%A8%E5%B1%80%E5%8C%85%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/" title="使用yarn下载全局包的一些坑">使用yarn下载全局包的一些坑</a>。</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">#使用yarn全局安装Vue Cli</span><br><span class="line">yarn global add @vue/cli</span><br></pre></td></tr></table></figure>
+
+<p>ℹ️&emsp;注：如果使用<code>yarn global add vue-cli</code>则安装的是<strong>Vue Cli 2.x的版本</strong></p>
+<p>安装的是最新版，但是由于最新版本与Vue Cli2的<strong>初始化项目方式不同</strong>，如果有需要我们可以拉去2.x模板。</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">yarn global add @vue/cli-init</span><br><span class="line"># `vue init` 的运行效果将会跟 `vue-cli@2.x` 相同</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>使用Vue Cli2初始化项目</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vue init webpack [项目名称]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用Vue Cli3+初始化项目</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vue creat [项目名称]</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h1 id="Vue-Cli2的使用"><a href="#Vue-Cli2的使用" class="headerlink" title="Vue Cli2的使用"></a>Vue Cli2的使用</h1>]]></content>
+      <categories>
+        <category>Web前端</category>
+        <category>webpack</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>webpack的使用</title>
     <url>/2020/09/23/webpack%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h1 id="webpack中的loader"><a href="#webpack中的loader" class="headerlink" title="webpack中的loader"></a>webpack中的<strong>loader</strong></h1><h2 id="loader的作用"><a href="#loader的作用" class="headerlink" title="loader的作用"></a>loader的作用</h2><ol>
@@ -368,105 +451,6 @@
         <tag>前端</tag>
         <tag>webpack</tag>
         <tag>vue</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vue中级的笔记</title>
-    <url>/2020/09/27/vue%E4%B8%AD%E7%BA%A7%E7%9A%84%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="Vue-Cli-脚手架"><a href="#Vue-Cli-脚手架" class="headerlink" title="Vue Cli(脚手架)"></a>Vue Cli(脚手架)</h1><blockquote>
-<p><a href="https://cli.vuejs.org/zh/guide/">Vue Cli文档</a></p>
-<p>如果只是写vue的demo程序可能使用不到Vue Cli，但是开发大型项目，就必然要使用Vue Cli。</p>
-<p>使用Vuejs开发大型应用时，我们需要考虑代码目录结构、项目结构和部署、热加载、代码单元测试等事情。如果每个项目都要手动完成这些工作，那无疑效率比较低效，所以通常我们会使用一些脚手架工具来帮助完成这些事情。</p>
-</blockquote>
-<h2 id="什么是Cli"><a href="#什么是Cli" class="headerlink" title="什么是Cli"></a>什么是Cli</h2><ul>
-<li>Cu是Command—Line Interface，翻译为命令行界面，但是俗称脚手架；</li>
-<li>Vue CL是一个官方发布vue.js项目脚手架；</li>
-<li>使用vue—cli可以快速搭建Vue开发环境以及对应的webpack配置.</li>
-</ul>
-<h2 id="Vue-Cli的前提"><a href="#Vue-Cli的前提" class="headerlink" title="Vue Cli的前提"></a>Vue Cli的前提</h2><ul>
-<li><p><strong>node</strong></p>
-<ul>
-<li><p>需要安装node和npm，使用npm安装模块或者插件速度慢的话也可以使用cnpm阿里镜像下载，速度可能会快点。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install cnpm -g --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>webpack</p>
-</li>
-</ul>
-<h2 id="使用Vue-Cli"><a href="#使用Vue-Cli" class="headerlink" title="使用Vue Cli"></a>使用Vue Cli</h2><p>由于npm实在太慢了，改用yarn安装。全局yarn安装方式：在终端执行<code>npm install -g yarn</code>。</p>
-<p>关于yarn还有一些坑：<a href="/2020/09/27/%E4%BD%BF%E7%94%A8yarn%E4%B8%8B%E8%BD%BD%E5%85%A8%E5%B1%80%E5%8C%85%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/" title="使用yarn下载全局包的一些坑">使用yarn下载全局包的一些坑</a>。</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">#使用yarn全局安装Vue Cli</span><br><span class="line">yarn global add @vue/cli</span><br></pre></td></tr></table></figure>
-
-<p>ℹ️&emsp;注：如果使用<code>yarn global add vue-cli</code>则安装的是<strong>Vue Cli 2.x的版本</strong></p>
-<p>安装的是最新版，但是由于最新版本与Vue Cli2的<strong>初始化项目方式不同</strong>，如果有需要我们可以拉去2.x模板。</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">yarn global add @vue/cli-init</span><br><span class="line"># `vue init` 的运行效果将会跟 `vue-cli@2.x` 相同</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>使用Vue Cli2初始化项目</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vue init webpack [项目名称]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用Vue Cli3+初始化项目</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vue creat [项目名称]</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<h1 id="Vue-Cli2的使用"><a href="#Vue-Cli2的使用" class="headerlink" title="Vue Cli2的使用"></a>Vue Cli2的使用</h1>]]></content>
-      <categories>
-        <category>Web前端</category>
-        <category>webpack</category>
-      </categories>
-      <tags>
-        <tag>前端</tag>
-        <tag>vue</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用yarn下载全局包的一些坑</title>
-    <url>/2020/09/27/%E4%BD%BF%E7%94%A8yarn%E4%B8%8B%E8%BD%BD%E5%85%A8%E5%B1%80%E5%8C%85%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/</url>
-    <content><![CDATA[<h1 id="yarn安装全局包不能全局使用的问题"><a href="#yarn安装全局包不能全局使用的问题" class="headerlink" title="yarn安装全局包不能全局使用的问题"></a>yarn安装全局包不能全局使用的问题</h1><p>使用yarn全局安装了**@vue/cli**</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yarn global add @vue&#x2F;cli</span><br></pre></td></tr></table></figure>
-
-<p>但是在终端中使用<code>vue --version</code>提示</p>
-<blockquote>
-<p>‘vue’ 不是内部或外部命令，也不是可运行的程序<br>或批处理文件。</p>
-</blockquote>
-<p>但是明明已经使用global add全局安装了呀！在网上找到了解决方法：</p>
-<ol>
-<li><p>在终端运行<code>yarn global bin</code>得到一个路径，是yarn全局bin文件的路径</p>
-<p><img src="https://cdn.jsdelivr.net/gh/coderbut/heyuhangspic/img/yarnbingggg.jpg" alt="yarnbingggg"></p>
-</li>
-<li><p>之后去到环境变量中，在Path变量中添加上面得到的路径；</p>
-</li>
-<li><p>重启终端，然后再次执行<code>vue --version</code>，就可以正常显示了。</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Web前端</category>
-        <category>node</category>
-      </categories>
-      <tags>
-        <tag>前端</tag>
-        <tag>node</tag>
-        <tag>yarn</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LOL壁纸</title>
-    <url>/2020/09/28/LOL%E5%A3%81%E7%BA%B8/</url>
-    <content><![CDATA[<p>还是不会在HEXO博客中整相册功能，就用分类和标签代替吧，用浏览器的Ctrl+F搜图。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/coderbut/heyuhangspic/img/wallhaven-oxzk1l.jpg" alt="拉克丝"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/coderbut/heyuhangspic/img/wallhaven-96kwvx.jpg" alt="阿卡丽-真实伤害"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/coderbut/heyuhangspic/img/wallhaven-lme3ep.jpg" alt="阿卡丽"></p>
-]]></content>
-      <categories>
-        <category>壁纸</category>
-      </categories>
-      <tags>
-        <tag>壁纸</tag>
-        <tag>图像</tag>
       </tags>
   </entry>
 </search>
